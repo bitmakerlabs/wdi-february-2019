@@ -32,7 +32,7 @@ As you code, keep in mind whether you are working with a single item, or a colle
 
 ## Documentation
 
-[https://ruby-doc.org/core-2.4.1/Array.html](https://ruby-doc.org/core-2.4.1/Array.html)
+[https://ruby-doc.org/core/Array.html](https://ruby-doc.org/core/Array.html)
 
 Here you'll find a list of useful array methods and how to use them.
 
@@ -56,11 +56,11 @@ When looking up documentation on arrays, you'll want to look at both the Array d
 
 ### Array docs
 
-[https://ruby-doc.org/core-2.4.1/Array.html](https://ruby-doc.org/core-2.4.1/Array.html)
+[https://ruby-doc.org/core/Array.html](https://ruby-doc.org/core/Array.html)
 
 ### Enumerable docs
 
-[https://ruby-doc.org/core-2.4.1/Enumerable.html](https://ruby-doc.org/core-2.4.1/Enumerable.html)
+[https://ruby-doc.org/core/Enumerable.html](https://ruby-doc.org/core/Enumerable.html)
 
 # Arrays
 
@@ -193,19 +193,6 @@ irb > foods
 
 # index:  0               1             2              3
 => ["Potato Bread", "French Fries", "Potato Pizza", "Yams"]
-```
-
-# `irb` Tangent
-
-irb reports back the return value of your last command.
-
-It denotes this using a *hash rocket*, the `=>` sign.
-
-Thus if you type `my_array` (the name of your variable), irb will show you the contents of that variable:
-
-```ruby
-irb > my_array
-=> ["Ray", "Egon", "Peter", "Winston"]
 ```
 
 `puts` is a built-in Ruby method for outputing to he screen.
@@ -392,7 +379,7 @@ your_array.count
 your_array.length
 ```
 
-Look at the [array documentation](https://ruby-doc.org/core-2.4.1/Array.html) and experiment with some of the other methods.
+Look at the [array documentation](https://ruby-doc.org/core/Array.html) and experiment with some of the other methods.
 
  Refer to this lesson in Alexa for details on each step:*
 
@@ -409,9 +396,9 @@ Look at the [array documentation](https://ruby-doc.org/core-2.4.1/Array.html) an
 
 ## Documentation
 
-[https://ruby-doc.org/core-2.4.1/Hash.html](https://ruby-doc.org/core-2.4.1/Hash.html)
+[https://ruby-doc.org/core/Hash.html](https://ruby-doc.org/core/Hash.html)
 
-Notice that Hashes include `Enumerable`, so you'll need to consult that [documentation](https://ruby-doc.org/core-2.4.1/Enumerable.html) too.
+Notice that Hashes include `Enumerable`, so you'll need to consult that [documentation](https://ruby-doc.org/core/Enumerable.html) too.
 
 ## Creating Hashes
 
@@ -1132,7 +1119,7 @@ end
 names_that_start_with_c # ["Cox", "Chang"]
 ```
 
-Checkout https://ruby-doc.org/core-2.4.1/Enumerable.html for even more iterative methods
+Checkout https://ruby-doc.org/core/Enumerable.html for even more iterative methods
 
 ## Iterating Through Hashes
 
@@ -1289,12 +1276,12 @@ What's important to take away for today is:
 
 ### Ruby Array Class Documentation
 
-[https://ruby-doc.org/core-2.4.1/Array.html](https://ruby-doc.org/core-2.4.1/Array.html)
+[https://ruby-doc.org/core/Array.html](https://ruby-doc.org/core/Array.html)
 
 ### Ruby Hash Class Documentation
 
-[https://ruby-doc.org/core-2.4.1/Hash.html](https://ruby-doc.org/core-2.4.1/Hash.html)
+[https://ruby-doc.org/core/Hash.html](https://ruby-doc.org/core/Hash.html)
 
 ### Ruby Enumerable Module Documentation
 
-[https://ruby-doc.org/core-2.4.1/Enumerable.html](https://ruby-doc.org/core-2.4.1/Enumerable.html)
+[https://ruby-doc.org/core/Enumerable.html](https://ruby-doc.org/core/Enumerable.html)
