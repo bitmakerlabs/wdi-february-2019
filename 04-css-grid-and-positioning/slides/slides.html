@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Floats and Positioning</title>
+    <title>Positioning</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script src="slides.js"></script>
     <style type="text/css">
@@ -14,7 +14,7 @@
     <textarea id="source">
 
 ### *Today's Lesson*
-# CSS: Floats and Positioning
+# CSS Positioning
 
 ???
 Start quick-time
@@ -33,15 +33,6 @@ name: agenda
 
 --
 
-#### Floats  .agenda-time[(40 min)]
-
-- `float: left` & `right`
-- Wrapping Content
-- Clearing Floats
-- Containing Floats with `overflow`
-- Use Cases
-
---
 
 #### Positioning .agenda-time[(30 min)]
 
@@ -50,115 +41,6 @@ name: agenda
 - `absolute`
 - `fixed`
 - `z-index`
-
---
-
-#### In Class Exercise: Galaxy Restaurant Menu  .agenda-time[(30 min)]
-
---
-
-#### Recap and Further Resources  .agenda-time[(5 min)]
-
----
-
-
-# Overview
-
-How do floats and positioning fit into the big picture?
-
---
-
-Any questions on the course content so far?
-
----
-
-
-# Intro
-
-An HTML document will, by default, display content from left-to-right, top-to-bottom.
-
---
-
-We can override this flow by using **floats** and **positioning**.
-
----
-
-
-layout: true
-
-# Floats
-
----
-
-
-## Lesson Working File
-[Floats Lesson Working File](../floats/lesson/index.html)
-
----
-
-
-layout: true
-
-.right-heading[Floats]
-
----
-
-
-## Left & Right
-
-By default, elements are not floated, aka `float: none`
-
---
-
-We can float an element by applying `float: left` or `float: right`.
-
---
-
-Floated elements are pulled to the inner left or right edge of their containing element, or to the outer edge of a previously floated element.
-
---
-
-Floated block level elements, which by default normally have a width set 100% of their containing element, will now only have enough width to hold its content.
-
---
-
-When we use float, we usually set the width of the floated element.
-
----
-
-
-## Wrapping Content
-
-If content follows a floated element, and it hasn't been cleared, it will wrap around the floated element.
-
----
-
-
-## Clearing Floats
-
-Use the `clear: both` property on an element to take it out of the previously floated context and restore it back to the regular flow of the document.
-
----
-
-
-## Containing Floats With Overflow
-
-By default, a floated parent element is not aware of its child floated elements, and will set its height accordingly (i.e. ignore the height of its child elements).
-
---
-
-To make a parent element aware of its floated child, we need to set its `overflow` property to `auto`, `hidden`, or `scroll`.
-
----
-
-
-## Example Use Cases
-
-- [Two Column Layout](../floats/example-use-cases/two-column-layout/index.html)
-- [Three Column Layout](../floats/example-use-cases/three-column-layout/index.html)
-- [Wrap Around An Image](../floats/example-use-cases/wrap-around-img/index.html)
-- [Grid With Unknown Number of Entities](../floats/example-use-cases/grid-with-unknown-number-of-entities/index.html)
-- [Large Uppercase First Letter of a Paragraph](../floats/example-use-cases/large-uppercase-first-letter-of-a-paragraph/index.html)
 
 ---
 
@@ -284,21 +166,10 @@ layout: true
 
 layout: false
 
-# Galaxy Restaurant Menu
-
-### In Class Exercise
-
-[Galaxy Restaurant Menu](../menu-exercise/galaxy-restaurant-menu.pdf)
-
 ---
 
 
 # Recap and Further Resources
-
-## Float Resources
-
-- [MDN: float](https://developer.mozilla.org/en-US/docs/Web/CSS/float) (documentation)
-- [MDN: Floats - learn web development](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Floats) (tutorial)
 
 ## Positioning Resources
 
