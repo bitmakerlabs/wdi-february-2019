@@ -50,7 +50,7 @@ The reason it's a separate module is because other types of collections also inc
 
 For example, the `Hash` data type also includes `Enumerable`.
 
-It makes sense to keep our code *DRY* (Don't - Repeat - Yourself), and therefore they've separated like-functionality into a separate module that can be used over and over again in different collection types.
+It makes sense to keep our code *DRY* (Don't - Repeat - Yourself), and therefore the maintainers of Ruby have separated like-functionality into a module that can be used over and over again in different collection types.
 
 When looking up documentation on arrays, you'll want to look at both the Array documention and the Enumerable documentation:
 
@@ -91,7 +91,7 @@ my_array << 'Peter'
 my_array << 'Winston'
 ```
 
-When an item is added to the array, it's assigned an *index*.
+When an item is added to the array, that item is assigned an *index*.
 
 An index is an `Integer` pointing to the value in the array.
 
@@ -195,7 +195,7 @@ irb > foods
 => ["Potato Bread", "French Fries", "Potato Pizza", "Yams"]
 ```
 
-`puts` is a built-in Ruby method for outputing to he screen.
+`puts` is a built-in Ruby method for outputing to the screen.
 
 When `puts` receives an array as its argument, it splits the array onto separate lines and outputs each line:
 
@@ -215,8 +215,6 @@ New programmers are often tripped up by the way `puts` behaves in irb vs. a regu
 ... as they see the return value in irb (even though there's no `puts`)
 
 ... but when they run their Ruby program, they don't see the output as they forgot to use `puts`.
-
-### And now back to our regularly scheduled lesson ...
 
 # Arrays
 
@@ -323,9 +321,7 @@ random_stuff = [2, 'the pope', :my_symbol]
 
 Even though it's possible to add objects of different types in an array, it's more common to store objects of the same type in an array.
 
-# Arrays
-
-## Nested Arrays
+# Nested Arrays
 
 We can store arrays inside of arrays:
 
@@ -338,6 +334,15 @@ my_arrays = [nums, prices, words]
 ```
 
 Notice the square brackets on the outside of `my_arrays`. This denotes that my_arrays is an array. And then notice the square brackets around each array inside the greater array. This is called a *nested array*.
+
+To access elements in a nested array:
+
+```ruby
+my_arrays[2]
+=> ["shoe", "banana", "the pope"]
+my_arrays[2][1]
+=> "banana"
+```
 
 # Class Exercise: Array Party Exchange
 
@@ -365,15 +370,16 @@ Change the value of one of your items to something else by using an equals `=` a
 
 ### Step #4: Do Things With Your Array
 
-Once you have items in an array, there's tons of functionality available. Try these out:
+Once you have items in an array, there's tons of functionality available.
 
 ```ruby
+# try these and see what happens:
 your_array.sort
 your_array.reverse
 your_array.join(', ')
 your_array.sample # try this one a few times
 
-# try these: is there a difference?
+# try these three methods: is there a different result?
 your_array.size
 your_array.count
 your_array.length
@@ -416,13 +422,15 @@ Here's how to create a hash with values:
 light = { :type => 'led', :duration => '1000 hours', :price => 1.99 }
 ```
 
-The `=>` is called a *hash rocket* as it's commonly used for create hashes and looks like a rocket.
+The `=>` is called a *hash rocket* as it's used when creating hashes and it looks like a rocket.
 
-Each item in a hash must have both a `key` and a `value`. In the previous example:
+Each item in a hash must have both a `key` and a `value`.
 
-`:type` is the key, `'led'` is the value
-`:duration` is the key, `'1000 hours'` is the value
-`:price` is the key, `1.99` is the value.
+In the previous example:
+
+- `:type` is the key, `'led'` is the value
+- `:duration` is the key, `'1000 hours'` is the value
+- `:price` is the key, `1.99` is the value.
 
 Newer versions of Ruby support a more elegant syntax for creating hashes:
 
@@ -748,7 +756,7 @@ In this variable we store an array that contains 4 strings: *Cheer*, *Funshine*,
 
 Notice that our variable name `bears` has an `s` on the end of it.
 
-It's common to pluralize collections, and when you move onto rails, pluralization has significant meaning.
+It's common to pluralize collections, and when you move onto rails, pluralization can have a significant meaning.
 
 ```ruby
 bears.each do |bear|
@@ -910,7 +918,7 @@ Instead I just set up an array and immediately called `.each` on it.
 
 You'll often come across examples that use `{ }` instead of `do...end`. The open curly `{` is the `do` and the close curly `}` is the `end`.
 
-Ruby coders usually use curlys for simpler iteration loops that only contain one line of code in their code block. For example, the loop above could be written like this:
+Ruby coders usually use curlys for simpler iteration loops when the whole statement can fit on a single line.
 
 ```ruby
 [1, 2, 3, 4, 5].each { |number| puts "#{number} * 5 is equal to #{number * 5}" }
@@ -930,11 +938,11 @@ This is also valid Ruby code, but is not common practice.
 
 As you're just starting out, it's recommended that you always use `do...end` over multiple lines until you firmly grasp iteration.
 
-I only bring up the curlys as you will find examples like this when you're looking up the documentation.
+I only bring up the curlys as you'll find examples like this when you're looking up the documentation.
 
 ### `.map`
 
-`.map` transforms each item in an array. It's the second most common way of iterating over an array.
+`.map` transforms each item in an array. Along with `each`, it's another common way of iterating over an array.
 
 Let's say we wanted to create an HTML page for the Care Bear battle, and we want each attack to be a list item (`<li>` tag):
 
@@ -983,7 +991,7 @@ We get:
 => ["Cheer", "Funshine", "Love-a-lot", "Grumpy"]
 ```
 
-Don't worry if you don't fully grasp `.map` just yet: you may not even fully understand it by the end of this course. These are complex concepts.
+Don't worry if you don't fully grasp `.map` just yet: you may not even fully understand it by the end of this course. We are entering the territory of complex concepts.
 
 ### `.map!`
 
@@ -1163,35 +1171,6 @@ Cheer Bear, Funshine Bear, Love-a-lot Bear, Grumpy Bear,
 all let out blood thirsty roars!
 ```
 
-In this example we iterate through our hash twice.
-
-During each iteration, we setup the `key` to be stored in the variable `bear` and the `value` to be stored in the variable `action`.
-
-Notice that during our second iteration of the hash:
-
-```ruby
-bears.each do |bear, action|
-  print "#{bear} Bear, "
-end
-```
-
-We set up a local variable called `action` even though we never used `action` in the `do...end` block.
-
-This is because hashes are always `key - value` pairs, and you need to specify both regardless when iterating.
-
-One technique programmers use when they're forced to set a variable name they don't need is to use an underscore at the start of that variable.
-
-So for example, we could put:
-
-```ruby
-bears.each do |bear, _action|
-  print "#{bear} Bear, "
-end
-```
-
-This is like saying:
-> Yeah, I don't really want the `_action` variable, but Ruby is making me set it just so I can iterate through the hash. Eesh!
-
 ![](http://static.wixstatic.com/media/1ae492_d560e4d107eb440586106b0f5e9b96ec.jpg)
 
 # Iteration
@@ -1212,12 +1191,12 @@ bears = {
   'Grumpy'     => { action: 'shoots a poison tipped arrow at', damage: 20 }
 }
 
-useful_bears = bears.select do |_bear, attributes|
+useful_bears = bears.select do |bear, attributes|
   attributes[:damage] > 50
 end
 
 puts "Let's bring "
-useful_bears.each do |bear, _attributes|
+useful_bears.each do |bear, attributes|
   puts bear
 end
 puts 'to the battle as they do the most damage.'
