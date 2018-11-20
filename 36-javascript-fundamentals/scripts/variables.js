@@ -49,4 +49,4 @@ typeof(true);         //-> boolean
 typeof(null);         //-> object
 
 typeof(function() { return true; });  //-> function
-
+typeof( () => true );  //-> function

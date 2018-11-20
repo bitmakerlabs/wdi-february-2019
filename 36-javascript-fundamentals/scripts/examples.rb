@@ -29,6 +29,55 @@ days_of_the_week.length  # => 7
 an_object = { key: "value", name: "description", "title": "body"}
 
 
+# If Statement
+def if_statement
+  something_true = true; something_false = false
+  a_string = "PROTOTYPE"
+  result = nil
+
+  if a_string.length >= 9
+    puts "Condition A"
+    result = a_string.length
+  elsif a_string.length < 9
+    puts "Condition B"
+    result = "short"
+  else
+    puts "DEFAULT CASE"
+    result = nil
+  end
+
+  puts "result: ", result
+end
+
+def ternary_operator
+  ten = 10
+  result = (ten >= 10) ? true : false
+
+  puts "result:", result
+end
+
+
+def case_statement
+  fruit = "Banana"
+
+  case fruit
+  when "Apple"
+      puts "APPLE"
+  when "Pear"
+      puts "PEAR"
+  when "Banana"
+  when "Costa Rican Banana"
+  when "African Banana"
+  when "Plantain"
+      puts "BANANA"
+  else
+      puts "DEFAULT"
+  end
+
+  puts "Switch DONE."
+end
+
+
 def simple_for_loop
   for i in 0...9 do
     puts i
@@ -87,55 +136,6 @@ def infinite_loop
   end
 
   puts "Final counter:", counter
-end
-
-
-# If Statement
-def if_statement
-  something_true = true; something_false = false
-  a_string = "PROTOTYPE"
-  result = nil
-
-  if a_string.length >= 9
-    puts "Condition A"
-    result = a_string.length
-  elsif a_string.length < 9
-    puts "Condition B"
-    result = "short"
-  else
-    puts "DEFAULT CASE"
-    result = nil
-  end
-
-  puts "result: ", result
-end
-
-def ternary_operator
-  ten = 10
-  result = (ten >= 10) ? true : false
-
-  puts "result:", result
-end
-
-
-def case_statement
-  fruit = "Banana"
-
-  case fruit
-  when "Apple"
-      puts "APPLE"
-  when "Pear"
-      puts "PEAR"
-  when "Banana"
-  when "Costa Rican Banana"
-  when "African Banana"
-  when "Plantain"
-      puts "BANANA"
-  else
-      puts "DEFAULT"
-  end
-
-  puts "Switch DONE."
 end
 
 

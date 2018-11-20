@@ -1,99 +1,43 @@
 
 // Numbers
-var aNumber = 10;
-var aFloatingPointNumber = 3.1415;
+const aNumber = 10;
+const aFloatingPointNumber = 3.1415;
+let amount = 10;
+amount -= 1;
+console.log(amount);
 
 // Strings
-var aString = 'this is a string';
-var anotherString = "This is also a string";
+const aString = 'this is a string';
+const anotherString = "This is also a string";
 
 // Booleans (True and False)
-var aTrue = true;
-var aFalse = false;
+const aTrue = true;
+const aFalse = false;
 
 // undefined
-var anUndefinedVariable;
-var anUndefinedVariable = undefined; // exactly the same as previous line
+let anUndefinedVariable;
+let anUndefinedVariable = undefined; // exactly the same as previous line
 
 // null
 // This is an value that indicates something explicitly has no value
-var nullValue = null;
+const nullValue = null;
 
 // Arrays
-var anEmptyArray = [];
-var daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-var mixedArray = [1, 2, 'THREE', 'Four', false];
+const anEmptyArray = [];
+const daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const mixedArray = [1, 2, 'THREE', 'Four', false];
 
 daysOfTheWeek[1]      // => Monday
 daysOfTheWeek.length  // => 7
 
 // Object Literals
-var anObject = { key: "value", name: "description", "title": "body"};
+const anObject = { key: "value", name: "description", "title": "body"};
 
-
-function simpleForLoop() {
-  for (var i = 0; i < 9; i++) {
-    console.log(i);
-  };
-
-  console.log("Done looping! i = " + i);
-}
-
-// For Loop
-function forLoop() {
-  var mystring = "some random string";
-  var sum = 0;
-  for (var i = 0; i < mystring.length; i++) {
-    sum += i; // sum = sum + i;
-    console.log(mystring[i]);
-  };
-
-  console.log("sum: ", sum);
-}
-
-
-// While Loop
-function whileLoop() {
-  var counter = 200;
-  while (counter < 100) {
-    counter++;
-    console.log('Counter:', counter);
-  }
-}
-
-
-// Do/While Loop
-function doWhileLoop() {
-  var atLeastOnce = false;
-
-  do {
-    console.log('atLeastOnce:', atLeastOnce);
-    atLeastOnce = true;
-  } while (atLeastOnce);
-
-  console.log('atLeastOnce after loop', atLeastOnce);
-}
-
-
-function infiniteLoop() {
-  var counter = 0;
-  while (true) {
-    counter++;
-    console.log(counter);
-
-    if (counter > 100) {
-      console.log("Found a match!");
-      break;
-    }
-  }
-
-  console.log("Final counter:", counter);
-}
 
 
 // If Statement
 function ifStatement() {
-  var somethingTrue = true,
+  let somethingTrue = true,
       somethingFalse = false,
       aString = "PROTOTYPE",
       result;
@@ -113,7 +57,7 @@ function ifStatement() {
 }
 
 function ternaryOperator() {
-  var ten = 10,
+  const ten = 10,
       result = (ten >= 10) ? true : false;
 
   console.log("result:", result);
@@ -121,7 +65,7 @@ function ternaryOperator() {
 
 
 function switchStatement() {
-  var fruit = "Banana";
+  const fruit = "Banana";
 
   switch (fruit) {
       case "Apple":
@@ -145,6 +89,66 @@ function switchStatement() {
 }
 
 
+// For Loops
+function simpleForLoop() {
+  for (let i = 0; i < 9; i++) {
+    console.log(i);
+  };
+
+  console.log("Done looping! i = " + i);
+}
+
+function forLoop() {
+  const mystring = "some random string";
+  let sum = 0;
+  for (let i = 0; i < mystring.length; i++) {
+    sum += i; // sum = sum + i;
+    console.log(mystring[i]);
+  };
+
+  console.log("sum: ", sum);
+}
+
+
+// While Loop
+function whileLoop() {
+  let counter = 200;
+  while (counter < 100) {
+    counter++;
+    console.log('Counter:', counter);
+  }
+}
+
+
+// Do/While Loop
+function doWhileLoop() {
+  let atLeastOnce = false;
+
+  do {
+    console.log('atLeastOnce:', atLeastOnce);
+    atLeastOnce = true;
+  } while (atLeastOnce);
+
+  console.log('atLeastOnce after loop', atLeastOnce);
+}
+
+
+function infiniteLoop() {
+  let counter = 0;
+  while (true) {
+    counter++;
+    console.log(counter);
+
+    if (counter > 100) {
+      console.log("Found a match!");
+      break;
+    }
+  }
+
+  console.log("Final counter:", counter);
+}
+
+
 // Named function
 function namedFunction() {
   console.log("Inside namedFunction");
@@ -161,7 +165,7 @@ function functionWithParameters(param1, param2) {
 }
 
 // Anonymous function
-var anonymous = function() {
+const anonymous = function() {
   console.log("I'm anonymous");
 };
 
@@ -174,7 +178,7 @@ function pretty(func) {
 }
 
 function printYear() {
-  var currentDate = new Date();
+  const currentDate = new Date();
   console.log(currentDate.getFullYear());
 }
 
@@ -187,15 +191,18 @@ pretty(function() { // anonymous function example
   console.log("How long did I take to run?");
 });
 
+// Arrow functions - see functions.js
+
+
 
 // Scope examples -------------------
 
-var test = 7;
+const test = 7;
 console.log(test);
 console.log(global.test);
 function d() {
   test2 = 'cheese';
-  var localToFunction = 'bob';
+  const localToFunction = 'bob';
 }
 d();
 console.log(global.test2);
@@ -208,7 +215,7 @@ console.log("\n\n\n");
 
 
 function takesLong() {
-  for (var i=0; i<1000000000; i++) {
+  for (let i=0; i<1000000000; i++) {
     // do nothing but take a while!
   }
   console.log("Took a while!");
@@ -229,27 +236,35 @@ console.log("\n\n\n");
 
 
 // forEach callback
-arr = [1, 2, 3];
+const arr = [1, 2, 3];
 arr.forEach(function(x) {
   console.log(x * 2);
 });
+arr.forEach((x) => {
+  console.log(x * 2);
+});
+
+// map callback
+const values = [3, 4, 5]
+const newValues = values.map(num => num ** 2)
+console.log(newValues);
 
 // objects - accessing attributes
 
-places = {
+const places = {
   'toronto': 'big',
   'montreal': 'very artsy',
   'vancouver': 'relaxed'
 };
 console.log(places['toronto']); // the standard way
 console.log(places.montreal); // much easier and more readable!
-var place = "montreal";
+const place = "montreal";
 console.log(places[place]); // the standard way - no way around it for dynamic access
 
 
 // objects with functions - basic example
-var y = 0;
-var moves = {
+const y = 0;
+const moves = {
   'F': function() { y += 1 },
   'B': function() { y -= 1 },
 }
@@ -263,13 +278,13 @@ console.log(y);
 
 // objects with functions - basic Mars Rover implementation
 
-var roverX = 0,
+const roverX = 0,
     roverY = 0,
     roverDirection = 'N',
     directions = ['N', 'E', 'S', 'W'];
 
 function turnRover(amount) {
-  index = directions.indexOf(roverDirection);
+  let index = directions.indexOf(roverDirection);
   index = (index + amount) % 4;
   if (index < 0) index += 4;
   roverDirection = directions[index];
@@ -294,7 +309,7 @@ roverMoves = {
 }
 
 // main function
-var orders = {
+const orders = {
   'L': function() { turnRover(-1) },
   'R': function() { turnRover(1) },
   'M': function() { moveRover(1) },
