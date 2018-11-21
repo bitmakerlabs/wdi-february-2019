@@ -25,15 +25,14 @@ As we dive deeper into JavaScript, our second programming language, we need to r
 
 |   Ruby  |   JS    |
 |---------|---------|
-|Defined with the `def` keyword|Defined with the `function` keyword|
+|Defined with the `def` keyword|Defined with the `function` keyword (or arrow notation)|
 |All parameters must be specified when called|Parameters are not required|
-|Implicit and explicit return values|Explicit return value only (otherwise `undefined`)|
-|One way to define a method|Two ways to define a function: function declaration and function expression|
+|Implicit and explicit return values|Explicit return value for normal functions (otherwise `undefined`). Implicit and explicit return values for arrow functions.|
+|One way to define a method|Three ways to define a function: function declaration, function expression, and arrow function|
 
 ## How are JS Functions different than methods?
 
 - Functions in JS are **first-class citizens** of the language
-- More technically speaking, they're referred to as **first-order functions**
 - This means that a function can be:
   - Stored in a variable
   - Passed as an argument to another function
@@ -46,15 +45,18 @@ As we dive deeper into JavaScript, our second programming language, we need to r
   * Function declaration
   * Function expression
   * Anonymous functions
+  * Arrow functions
 
 ## Scope - 15 minutes
 
-  * Local (function based)
+  * Local
+    * `var`: function based
+    * `let` and `const`: block based (easier)
   * Global
     * `window.varname` (in the browser)
     * `global.varname` (in node)
-    * declare a variable without `var`
-  * Always use `var`!!!
+    * declare a variable without `var`, `let`, or `const`
+  * Always use properly declare variables!!! Use `let` or `const`.
 
 ## Callbacks - 15 minutes
 
