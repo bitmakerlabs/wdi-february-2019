@@ -29,6 +29,7 @@
 ## The Event Object
 - The event handler will be passed an Event object that contains information about the event that occurred
 - The Event object also has methods that allow you to control whether the event bubbles up the DOM (event.stopPropagation()) and whether the browser's default behaviour for that event should occur (event.preventDefault())
+- `this` can be used inside of the event handler to access the DOM element that is the current target of the event.
 
 
 ## Using delegated event handlers

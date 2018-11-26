@@ -1,19 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Function scope
 
-  var count = 0,
-      colors = ['tomato', 'azure', 'green', 'orange', 'purple', 'chartreuse', 'gold', 'fuschia'];
+  let count = 0;
+  const colors = ['tomato', 'azure', 'green', 'orange', 'purple', 'chartreuse', 'gold', 'fuschia'];
 
-  var container = document.querySelector('#container');
-
-  var boxMaker = document.querySelector('#box-maker');
+  const container = document.querySelector('#container'),
+        boxMaker = document.querySelector('#box-maker');
 
   boxMaker.addEventListener('click', function() {
-      var x = Math.ceil(Math.random() * 400),
+      const x = Math.ceil(Math.random() * 400),
           y = Math.ceil(Math.random() * 200),
           c = Math.ceil(Math.random() * 7);
 
-      var circle = document.createElement('div');
+      const circle = document.createElement('div');
 
       circle.className = 'circle';
 
