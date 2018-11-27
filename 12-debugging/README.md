@@ -45,12 +45,13 @@ rbenv rehash
 - What is a debugger? (less than 5 mins)
   - [Sidenote: What is a gem?](https://rubygems.org/) (Less than 5 mins)
 
-Demo how to set pry breakpoints in order to fix broken code in `rover.rb`. (10 mins)
-
-Interactively debug broken code in `game.rb` and `player.rb`. (20 mins)
-
+Demo how to set pry breakpoints in order to fix broken code in `paperboy.rb`. (10 mins)
 
 ---
 break
 ---
+
+Interactively debug broken code in `game.rb` and `player.rb`, talking through how to interpret each error message as it comes up.  Encourage use of pry at some point if students don't suggest it.  (usually takes rest of morining, but if you finish early move on to debugging `rover.rb`)
+
+
 
