@@ -10,7 +10,7 @@ tablet to desktop.
 2. [It's all about context](#it-s-all-about-context)
 3. [Media queries](#media-queries)
 4. [Meta Viewport](#meta-viewport)
-5. [Responsive design is HARD](#responsive-design-is-hard)
+5. [Responsive design is easy](#responsive-design-is-easy)
 
 
 ## Devices Galore!
@@ -37,7 +37,9 @@ tablet to desktop.
 - What units do we want to use here?
 
 
-## Responsive design is HARD
+## Responsive design is easy
+
+It's easier than ever to build responsive web apps using tools like CSS Grid.
 - Grids
   - What techniques can we use to adapt our grids to different devices?
   - This is called a fluid grid system, which we'll look at next time
