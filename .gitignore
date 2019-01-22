@@ -3,4 +3,5 @@
 *.swp
 *.swn
 *.swo
+__pycache__
 node_modules
