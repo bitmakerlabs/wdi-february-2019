@@ -13,7 +13,7 @@ During this lecture, we'll cover how the web works and the different parts of th
 * [Request Methods](#request-methods) (15 min)
 * [CRUD](#crud) (5 min)
 * [Response Codes](#response-codes) (5 min)
-* [Sinatra](#sinatra) (60 min)
+* [Django](#django) (60 min)
 
 ## Intro
 
@@ -91,27 +91,34 @@ Most important:
 * 500: [Internal Server Error](https://http.cat/500)
 * 503: [Service Unavailable](https://http.cat/503)
 
-## Sinatra
+## Django 
 
-Sinatra is a mini web-framework for Ruby we'll be using to learn the different parts of web development before we dive into Rails.
+## Django
+Django is a web-framework for Python we'll be using for the remainder of the course.
 
-### Installing Sinatra
 
-```bash
-$ gem install sinatra
-```
+* Defining URLs
+* Templates
 
-* Routes (Only GET for now)
-* Params
-* Views / Templates
+### Django Commands
 
-## Links
+start a new project:
 
-* [Slides](http://bitmakerlabs.s3.amazonaws.com/slides/cohort9/HTTP.pdf) - These are old slides and are for Reference Only
-* [404 Not Found images](https://google.com/search?q=404+not+found&tbm=isch)
-* [500 Internal Server Error images](https://google.com/search?q=500+internal+server+error&tbm=isch)
-* [Wikipedia: List of HTTP Status Codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
-* [Wikipedia: CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
-* [Sinatra](http://www.sinatrarb.com)
-* [Rack](http://rack.github.io)
-* [Wikipedia: Domain-Specific Language](https://en.wikipedia.org/wiki/Domain-specific_language)
+`django-admin startproject my_project_name`
+
+from inside the project directory, start the server:
+
+`python manage.py runserver`
+
+then go to `localhost:8000` in your browser
+
+#### Configuration
+
+In `settings.py`, add the name of your project to the list of `INSTALLED_APPS`.
+
+### What goes where
+
+* `urls.py` is where we define our URLs
+* the `templates` directory is where we put our HTML files
+  * embed Python in these HTML templates with `{% %}` and `{{ }}`
+* `views.py` is (typically) where we define the functions to handle different requests
