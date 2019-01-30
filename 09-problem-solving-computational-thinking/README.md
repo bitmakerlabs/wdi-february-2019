@@ -1,5 +1,5 @@
 # Problem Solving and Computational Thinking
-So far we've talk about how the fundamental build blocks of programming work, including variables, arrays, hashes, iteration, if/else statements, methods, arguments, and return values.  But knowing the *what* and *how* isn't the hard part - the hard part is knowing *why* and *when* to apply each of these concepts when you're presented with any given programming task.
+So far we've talk about how the fundamental build blocks of programming work, including variables, arrays, hashes, iteration, if/else statements, functions, arguments, and return values.  But knowing the *what* and *how* isn't the hard part - the hard part is knowing *why* and *when* to apply each of these concepts when you're presented with any given programming task.
 
 ##  Agenda
 * What is computational thinking
@@ -36,25 +36,26 @@ So far we've talk about how the fundamental build blocks of programming work, in
 * upvotes / green "accepted" check mark
 * comments saying the solution helped
 * skip the question and only go back to read it if you need the context to understand the answer or which parts of it are relevant/irrelevant to you
-* go to official documentation to learn more about any methods mentioned
+* go to official documentation to learn more about any functions mentioned
 
-Talk through some examples of google searches and stack overflow hits.
-
-####  Reading the Ruby Docs
+####  Reading the Python Docs
 ```
-method_name(argument, optional_argument=default_value) → return_value
+function_name(required_argument, optional_argument=default_value)
 
-- description of method
+function_name([optional_argument])
 
-- examples of use
+functional_name(*as_many_args_as_you_want)
+
 ```
 
-* most of the time, skip the description of method and focus on first couple of examples of use, then go to irb and try it yourself to verify you understand
+* most of the time, skim the description for the **return value** and info about what to pass as arguments, then go to Python and try it out yourself
+* sometimes returning to read the description more carefully _after_ having tried it in the Python shell can provide better insight
+
 
 Go through following examples:
-* `String#length`
-* `String#to_i`
-* `String#chomp`
+* `len()`
+* `int()`
+* `print()`
 
 ### Pseudocode (slides)
 
@@ -70,7 +71,7 @@ Go through following examples:
 
 # Break
 
-Demonstrate example of coming up with a high level/english language plan, pseudocoding it, then translating it into Ruby
+Demonstrate example of coming up with a high level/english language plan, pseudocoding it, then translating it into Python
 e.g. adding up all the numbers in an array
 
 Together as a class, apply the same process to pig latin problem
