@@ -1,4 +1,3 @@
-# Request-Response Revisited
 ## Rendering Different Types of Responses
 
 Data doesn't inherently have any one way of being presented. The same data can be formatted in many different ways, depending on what the client needs. So far, we've only seen HTML responses, but as our web apps grow, we'll need to provide different representations so that clients (not just web browsers!) can interact with our data in cool new ways.
@@ -60,13 +59,3 @@ After this lesson, you should have an understanding of:
   * e.g. `"title, description, price"` for a CSV
 * You need to parse the data into a format that is understood by the rest of your program
 
-## How to serve different representations in Rails
-* Rails controllers have a built-in method for responding with different representations of the same data
-* `respond_to` is used to explicitly define the different data types a particular action can respond with
-  * In fact, when using `respond_to`, the action will throw an exception if a data type that's not defined is requested
-
-## How this affects your routes
-* Knowing about different data formats should demystify one more thing in the `rails routes` output
-* Each of the routes accepts a format at the end, which can be used to indicate which response the client wants
-  * e.g. `/products/1.json` will return the JSON response rather than the HTML response for that resource
-  * See how that looks like a file extension!
