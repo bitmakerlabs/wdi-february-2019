@@ -1,6 +1,6 @@
-# Analyzing and planning a new Rails app
+# Analyzing and planning a new web app
 
-Today we will be looking at how to go about planning and thinking through a Rails application. We will be talking about some of the things that need to be done before you start coding.
+Today we will be looking at how to go about planning and thinking through a new project. We will be talking about some of the things that need to be done before you start coding.
 
 ## Agenda
 After this lesson, you will know:
