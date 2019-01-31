@@ -1,9 +1,0 @@
-<h3>All restaurants</h3>
-
-<section class="restaurants-list">
-  <%= render @restaurants %>
-</section>
-
-<% if current_user %>
-  <p><%= link_to 'Add Restaurant', new_restaurant_path %></p>
-<% end %>
