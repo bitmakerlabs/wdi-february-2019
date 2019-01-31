@@ -1,12 +1,12 @@
-Our journey into programming begins with the fundamentals of any modern programming language: basic data types, variables and flow control. We'll be discussing the why these are fundamental topics to learn as a developer and how you can combine them to write your first programs.
+ur journey into programming begins with the fundamentals of any modern programming language: basic data types, variables and flow control. We'll be discussing the why these are fundamental topics to learn as a developer and how you can combine them to write your first programs.
 
 ## Agenda
-* What is programming?
-* What is Python?
-* How to run Python programs
-* Basic Data Types
-* Variables and assignment
-* Control Structures
+* [What is programming?]
+* [What is Python?]
+* [How to run Python programs]
+* [Basic Data Types]
+* [Variables and assignment]
+* [Control Structures]
 
 ## What is programming?
 * Programming is the process of solving problems through code
@@ -151,3 +151,5 @@ You can tell the Python interpreter to ignore lines of code by starting the line
 # this is a comment
 # Python will skip these lines
 ```
+
+
