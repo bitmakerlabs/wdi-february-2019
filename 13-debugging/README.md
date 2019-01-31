@@ -1,57 +1,28 @@
-# Debugging
-
-## Intro
-At least half of your time as a developer is going to be spent debugging or testing broken code.  One thing that sets apart really good developers from not so good developers is a really good developer knows that they are going to make a lot of mistakes, and knows what precautions to take in order to mitigate that.  This lesson will show you some habits and tools you can adopt to improve your adventures in debugging.
-
 ## Agenda
 1. What's a bug?
 2. Good habits for avoiding bugs
-3. Debugging techniques
-4. Using a debugger (pry) 
-5. Common error messages
+3. Debugging techniques & tools
+  * "debuggers"
+  * PDB: The Python Debugger
+  * IPDB: The IPython Debugger
+4. Common error messages and what they mean
 
-## What is a bug? (less than 5 minutes)
-- Code that won't run at all (error message)
+### Installing IPDB
 
-- Code that runs but doesn't behave the way you expect
+`pip install ipdb`
 
-- History of the word bug (optional)
-
-![Grace Hopper's notebook recording the first bug](https://www.wired.com/images_blogs/wiredscience/2013/12/moth-660x548.jpg)
-
-## Debugging
-
-### Good habits for avoiding bugs (5-10 minutes)
-- Brainstorm with class then refer to [slides](https://s3.amazonaws.com/bitmakerhq/lessons/web-development/2016-08-team-johnny5/debugging_testing.pdf)
-
-
-
-### Debugging techniques (5-10 minutes)
-- Brainstorm with class then refer to [slides](https://s3.amazonaws.com/bitmakerhq/lessons/web-development/2016-08-team-johnny5/debugging_testing.pdf)
-
-
-
-
-### Tools for debugging
-[Pry](http://pryrepl.org/)
-
-Installation:
-
-```
-gem install pry
-rbenv rehash
-```
-
-- What is a debugger? (less than 5 mins)
-  - [Sidenote: What is a gem?](https://rubygems.org/) (Less than 5 mins)
-
-Demo how to set pry breakpoints in order to fix broken code in `paperboy.rb`. (10 mins)
-
----
-break
----
-
-Interactively debug broken code in `game.rb` and `player.rb`, talking through how to interpret each error message as it comes up.  Encourage use of pry at some point if students don't suggest it.  (usually takes rest of morining, but if you finish early move on to debugging `rover.rb`)
-
+### PDB/IPDB Things
+* `import pdb` or `import ipdb`
+* `pdb.set_trace()` or `ipdb.set_trace()`
+  * always somewhere _before_ any errors, not after
+* `continue` or `c` for short
+  * to resume execution of program
+* `next` or `n` for short
+  * go to next line
+* `step` or `s` for short
+  * go to next or step into function called on current line
+  * like `next` but more granular
+* `list` or `l` for short
+  * to see where you are the in code
 
 
