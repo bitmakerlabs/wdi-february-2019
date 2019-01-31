@@ -1,42 +1,143 @@
-# Web Frameworks Part 2
-
-This is the continuation of HTTP Requests and Responses (a.k.a Web Frameworks Part 1).
-
-Now that we have an idea of how HTTP works, and having seen a basic web application in action, it's time to take things to the next level with a larger web application.
-
-We'll write a web application that has a layout, CSS, images, dynamic pages, dynamic routes, as well as  a database to store its data.
+bout the MVC pattern for architecting web apps and focus on how to integrate databases in Django projects.
 
 ## Agenda
+* MVC
+  * how does this relate to what we've done so far
+* The "M" in MVC
+  * Adding a database to your Django project
+  * Building models with Django's ORM
+* Django shell
+* Django's built-in admin interface
 
-* [Intro](#intro) (< 5 mins)
-* [Layouts](#layouts) (25 min)
-* [CSS and Images](#css-and-images) (15 min)
-* [Dynamic Routes and the Params Hash](#dynamic-routes-and-the-params-hash) (45 min)
-* [Databases](#databases) (30 min)
 
-## Intro
+### Django Shell
 
-* Recap of HTTP Requests and Responses
+Run `python manage.py shell` to open an IPython shell with access to your app's database
 
-## Layouts
+* What is a database?
+* Why do we need databases?
 
-* Using a `layout` to give consistency to each page.
+## Components of a Database
 
-## CSS and Images
+* **Tables**: picture an Excel spreadsheet
+* **Columns**: attributes, name, data type
+* **Row**: Record, represents a set of data for each column
+* **Primary key**:
+  * `id`/`pk`
+  * Unique
+  * Can be an integer or [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) (349tu-hbe0984-5hww9e8y5h)
+* **Foreign key**:
+Allows you to associate to another table. i.e.
+`objectname_id`
+* [ACID](https://en.wikipedia.org/wiki/ACID)
 
-* Using the `public` directory to serve CSS, images, and other assets.
+## Postgres
 
-## Dynamic Routes and the Params Hash
+* How to run `psql`
+  * On Linux, simply run `psql` anywhere in the terminal
+  * On OS X, first make sure postgres is running (you should see the elephant in your toolbar).  If it isn't open spotlight (`cmd` + `space`) and search for the Postgres application.  If `psql` still doesn't work even though you see the elephant, try clicking on the elephant and telling it to start the Postgres server.
+* Postgres commands:
+  * `\q` - quits from Postgres
+  * `\l` - lists all the databases in the system
 
-* **Dynamic Routes** vs **Static Routes**
-* The `params` hash and what it's used for
 
-## Databases
 
-* Accessing data stored in a database in the context of a web application.
+### Django's ORM
 
-## Links
+### Useful Methods to Know
 
-* [Sinatra](http://www.sinatrarb.com)
-* [Starter CSS](https://tinyurl.com/ydyk6dc2)
-* [Starter Image](https://tinyurl.com/y7zuf3bf)
+The complete Django db query interface can be found in [the official documentation](https://docs.djangoproject.com/en/2.1/topics/db/queries/#falling-back-to-raw-sql), but here are some highlights:
+
+#### Creating
+
+`MyModel.create(name='someone', email='someone@somewhere.ca')`
+
+
+#### Reading
+
+##### Retrieving a Single Object
+
+`MyModel.objects.get(pk=1)`
+
+`MyModel.objects.get(name='something')`
+
+
+##### Retrieving Multiple Objects
+
+`MyModel.objects.all()`
+
+
+#### Conditions
+
+Exact match:
+
+`MyModel.objects.filter(category='animals')`
+
+Greater than:
+
+`MyModel.objects.filter(price__gt=10)`
+
+Less than or equal to:
+
+`MyModel.objects.filter(price__lte=100)` 
+
+
+Notice the double underscores: `__` (called 'dunder' in Python lingo).
+
+#### Counting Results
+
+`MyModel.objects.filter(category='animals').count()`
+
+
+
+#### Order
+
+In ascending order:
+
+`MyModel.objects.order_by('price')`
+
+Or descending order:
+
+`MyModel.objects.order_by('-price')`
+
+
+#### Limit
+
+The QuerySet returned can be treated like a list:
+
+`MyModel.objects.filter(category='animals')[0]
+`MyModel.objects.filter(category='animals')[100:200]
+
+
+#### Aggregate
+
+These functions have [a separate page in the docs](https://docs.djangoproject.com/en/2.1/topics/db/aggregation/)
+
+You can import extra aggregation functions:
+
+`from django.db.models import Avg, Sum, Max, Min`
+
+And use them like so:
+
+`MyModel.objects.aggregate(Avg('price'))`
+
+#### Deleting
+
+```py
+example = MyModel.objects.get(pk=1)
+example.delete()
+```
+
+#### Updating
+
+```python
+example = MyModel.objects.get(pk=1)
+example.name = 'Someone else'
+example.save()
+```
+
+
+
+### Querying the Database
+
+Chain `.query` at the end of any Django query method to see what SQL is being composed and executed for you.
