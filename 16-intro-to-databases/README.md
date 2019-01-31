@@ -9,4 +9,3 @@ This lesson will cover how databases work at a very general level
 2. What is a database table?
 3. Intro to SQL and SQLite
 4. What is an ORM?
-5. Using MiniRecord
