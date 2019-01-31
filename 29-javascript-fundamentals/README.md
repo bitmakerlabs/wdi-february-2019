@@ -2,7 +2,7 @@
 
 In this lesson, we'll be covering the origins of JavaScript, as well as some the basic language constructs.
 
-Bounce between explanation (on slides) and coding some examples in skeleton.js .
+Bounce between explanation (on slides) and coding some examples in skeleton.js.
 
 ## Agenda - 5 minutes
 After this lesson, you will know:
@@ -23,9 +23,9 @@ Slides here: https://docs.google.com/presentation/d/15qjYctB823Jd3Bp7b89SiZkWXWf
   * Mention node.js.
   * JavaScript is not Java! (not allowed to abbreviate JS to 'Java')
 
-## Ruby vs JavaScript - 5 minutes
+## Python vs JavaScript - 5 minutes
 
-  * Show examples.js side-by-side with examples.rb (pick a good spot to show, eg. simple for loop section)
+  * Show examples.js side-by-side with examples.py (pick a good spot to show, eg. simple for loop section)
     * What looks different? (eg. `var` used for variables)
     * What looks the same? (much more open)
   * JavaScript is more syntax-heavy (eg. curly braces)
@@ -50,20 +50,19 @@ Slides here: https://docs.google.com/presentation/d/15qjYctB823Jd3Bp7b89SiZkWXWf
 
 ## JavaScript Arrays - 15 minutes
 
-  * Exactly like arrays in Ruby!
+  * Exactly like lists in Python!
   * Use for-loop for iteration in the basic case
   * There are other ways to iterate, but we need functions to do it!
     * Will look at this tomorrow
 
 ## JavaScript Objects - 15 minutes
 
-  * like hashes in Ruby!
+  * like dicts in Python!
   * JSON (briefly) - just a notation!
-  * Can do obj.attrName instead of obj['attrName'] - Ruby can't do this!
+  * Can do obj.attrName instead of obj['attrName'] - Python can't do this!
 
 ## Intro to Functions - 5 minutes
 
-  * Call them functions instead of methods in JavaScript
   * Function declaration
   * Function expression
   * Anonymous functions
