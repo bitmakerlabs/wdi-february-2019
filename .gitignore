@@ -5,3 +5,4 @@
 *.swo
 __pycache__
 node_modules
+*.sqlite3
