@@ -11,8 +11,6 @@ After this lesson, you should have an understanding of:
   * Application Programming Interfaces (APIs)
   * Making requests without a browser
   * Consuming different response types
-  * How to serve different representations in Rails
-    * How all of this affects your routes
 
 
 ## Different representations of the same data
@@ -40,7 +38,7 @@ After this lesson, you should have an understanding of:
 * An API is the collection of actions you can perform programmatically on any given system
 * Some examples:
   * Every public method of a class is part of its API
-  * All of the routes in your Rails application make up its API
+  * All of the routes in your Django application make up its API
   * The routes exposed by Twitter for reading and writing tweets from any site on the web is part of their API
     * When using the data from another site, we often refer to it as a **third-party API**
 * Clients and servers don't need to be written by the same team as long as the API is shared publicly
@@ -49,7 +47,7 @@ After this lesson, you should have an understanding of:
 * Browsers are not the only clients to your web applications
 * Googlebot is a good example of a client that will visit your application that is not a browser
 * In fact, we can write apps that request info from other apps directly
-* Let's see how we can do this with Ruby!
+* Let's see how we can do this with Python!
 
 ## Consuming different response types
 * Now that we can respond with different data types, we need to do something with the response

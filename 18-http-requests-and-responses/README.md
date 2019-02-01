@@ -4,7 +4,7 @@ Every time you enter a URL in your browser, you're making a **request** to a web
 
 The entire web is designed on the concept of clients that make requests to servers and servers returning a response for the requested information.
 
-During this lecture, we'll cover how the web works and the different parts of the **HTTP** (Hypertext Transfer Protocol). We'll also cover how to get started writing our very first Ruby web application!
+During this lecture, we'll cover how the web works and the different parts of the **HTTP** (Hypertext Transfer Protocol). We'll also cover how to get started writing our very first web application!
 
 ## Agenda
 
