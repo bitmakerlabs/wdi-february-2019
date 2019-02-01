@@ -49,7 +49,7 @@ Today we introduce AJAX, the last major conceptual piece of building a modern we
 * **JSON (JavaScript Object Notation)**
     * A data format based on the JavaScript syntax.
     * Easy for JavaScript applications to parse.
-    * Many programming languages (including Ruby) are able to convert data to and from JSON.
+    * Many programming languages (including Python) are able to convert data to and from JSON.
     * [Example](http://json.org/example.html)
 
 ### How Does It Work?
