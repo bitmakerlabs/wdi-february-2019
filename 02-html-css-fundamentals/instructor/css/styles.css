@@ -9,17 +9,59 @@
 
 /* Tag selectors */
 
+/*  CSS Selector => e.g. "body" */
+body {
+  background-color: gainsboro; /* CSS Declaration or CSS Rule */
+  font-size: 16px; /* Anatomy of a rule => property: value; */
+}
+
+h2 {
+  color: tomato;
+  color: lightseagreen;
+}
 
 /* Class selectors */
+.special-heading {
+  border: 5px dotted yellow;
+}
 
+.blue {
+  color: blue;
+}
 
 /* ID selectors */
+#hero-unit {
+  background-color: purple;
+}
 
-
+#awesome {
+  color: green;
+}
 
 /* ADVANCED SELECTORS */
 
 /* Combining selectors */
+header h3 .special-heading {
+  border: 10px solid black;
+}
 
+section > h1 {
+  background-color: darkgoldenrod;
+}
 
 /* Pseudo-selectors */
+h1:hover {
+  border: 5px dashed blue;
+}
+
+input:focus {
+  border: 5px solid black;
+}
+
+a:visited {
+  color: red;
+}
+
+a:active {
+  border-bottom: 6px solid green;
+}
