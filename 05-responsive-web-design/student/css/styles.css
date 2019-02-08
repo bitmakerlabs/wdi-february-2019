@@ -49,3 +49,54 @@ body {
 /*
  Write *YOUR* styles here!
 */
+body {
+  font-family: Georgia, sans-serif;
+  background-color: lightgrey;
+}
+
+img {
+  max-width: 100%;
+}
+
+.post {
+  background-color: white;
+  margin: 10px 0;
+
+}
+.post div {
+  padding: 20px;
+}
+.post-heading a {
+  text-decoration: none;
+}
+
+/* -------------------------------------------------- */
+/* Media Query Medium devices */
+/* -------------------------------------------------- */
+/*
+*/
+@media ( min-width: 600px) {
+  .post-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+
+  .post {
+    margin: 0
+  }
+
+}
+
+
+/* -------------------------------------------------- */
+/* Media Query Large Device */
+/* -------------------------------------------------- */
+/*
+*/
+
+@media (min-width: 960px) {
+  .post-wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
