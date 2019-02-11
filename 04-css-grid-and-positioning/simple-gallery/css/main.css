@@ -1,0 +1,110 @@
+/*
+*Things to add/try/correct:*
+- Remove the `grid` from the `.topbar` and align the `.logo` and `.hamburger` button into the same left/right positions they are now, but use `position`, rather than using the `grid`.
+- When the `.gallery` `.item` scroll over the `.topbar` they overlap incorrectly! This is because the source  order has the `.item` later in the html document than the `.topbar`. Correct this by changing the `z-index` of the `.topbar` to be higher than the items.
+- Add a few items to the footer and `position: fixed;` it so that it sticks to the bottom of the screen
+- Crop the images by giving `.item-img` a height, then use `overflow:hidden;` to crop the overhang. Note thatwhen you change the size of the browser/viewport width, you nowhave images that might be too short vertically. Instead of using a `px` or `em` value for the height, try using `vw`, whichstands for _viewport width_. It sets the height of the imagesto a % of the viewport's width (`25vw` = 25% of the viewport width),so when the viewport changes width, the height of the imagesis directly relative!
+- Add a few new images and see how they behave. Try both portrait and landscape images.
+- Create a navigation menu (common menu structure: `nav` > `ul` > `li` > `a`) in the `.topbar` that would drop down over top of the content when the `.hamburger` is clicked. Place is directly after the `.hamburger` button in the .topbar. See that the menu now falls into the first column of the second row, so use `grid-column` to span the `nav` across the entire row of columns _(start at 1, end at 4!)_
+- Hide the `nav` for now using `display:none;` and consider this would require Javascript to make (properly) functional. HOWEVER, you can mock up the functionality with css using the the `+` adjacent sibling selector, which selects an element that follows a specific sibling. Use this selector: `.hamburger:hover nav` to say, "A `nav` typed element that immediately follows a `.hamburger` that is currently being hovered". Change to `display:block` and see what happens! (Note this `+` selector only works if the `nav` is *immediately* following the `.hamburger` in the HTML document)
+- Vertically align the caption text to the middle of the image but either using a `grid` or `position`. Note: Both require you to wrap the caption text into it's own element, perhaps an `h3` is appropriate here?
+  - `grid`: Create three rows, where the first and last rows are `auto` height and remain empty and the caption text element (the new `h3`) is in the middle row
+  - `position`: Give the caption text element (the new `h3`) a position of `absolute` and specify both `top: 0;` and `bottom: 0`. If you pair those (seemingly) contradictory declarations with *both* a `height` declaration (non `auto`, try `height: 1em`) and `margin` with top and buttom set to `auto`, it will align to the vertical middle in a similar way that boxes align to the center of their parent horizontally in a static layout _(tricky!!!)_
+  - Are there other ways to achieve this?
+
+
+*Looking ahead to tomorrow with @abby:*
+- Apply a `max-width` to the `.photo-category` and ensure it remains center and prevents the images from growing too large.
+- Change the number of columns in the `.photo-category` from 2 down to 1, then up to 3. How does that change the layout based on the size of the viewport? Abby will show you how to apply those changes dynamically using `@media` queries
+- Can you adjust the `.topbar` styling so that the `.hamburger` disappears and the menu then takes it place? Then aligning the menu `li` into a single line (`display:inline-block` is a good choice for the latter) to mock what the `.topbar` would look like on a large viewport, where we don't need the menu to drop down and hide any longer.
+*/
+
+
+
+body {
+  font: 1em georgia, serif;
+  background-color: #ddd;
+  color: #222;
+  padding-top: 4.25em;
+  line-height: 1.5;
+}
+
+h1, h2 {
+  font-family: impact, sans-serif;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.25em;
+  margin: 1em 0;
+}
+
+p {
+  margin: 1em 0;
+}
+
+.topbar {
+  background-color: #444;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 3em 1fr 3em;
+  text-align: center;
+  padding: 1em;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.logo {
+  background-color: rgb(222, 134, 91);
+}
+
+.gallery {
+  background-color: gold;
+  overflow: hidden;
+  padding: 0 1em;
+}
+
+.photo-category {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+  margin: 1em 0;
+}
+
+.item {
+  position: relative;
+}
+
+.item-img img {
+  vertical-align: middle;
+}
+
+.item-cap {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font: 1.5em impact;
+  text-transform: uppercase;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding-top: 4em;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.item:hover .item-cap {
+  opacity: 1;
+}
+
+.bottombar {
+  padding: 0 1em;
+}
