@@ -93,13 +93,13 @@ layout: true
 --
 
 ## Week 2 (this week!):
-  Monday (yesterday): programming fundamentals: data types, variables, flow control<br>
+  Monday (yesterday): programming fundamentals such as, data types, variables, flow control<br>
 --
   ***Tuesday (today!): functions and methods***<br>
 --
   Wednesday (tomorrow): collections and iteration<br>
 --
-  Thursday: Problem Solving<br>
+  Thursday: problem solving<br>
 --
   Friday: Objected Oriented Programming (OOP)<br>
 
@@ -109,7 +109,7 @@ layout: true
 
 ---
 
-Functions and methods are a fundamental part of programming, and it's likely you'll use them in almost all future programs you write.
+Functions and methods are a fundamental part of programming, and it's likely you'll use them in almost all future programs you write
 
 ---
 layout: false
@@ -122,11 +122,11 @@ layout: false
 --
 
 - **Built-ins** are always available functions that are built into the python language:<br>
-https://docs.python.org/3/library/built-ins.html
+https://docs.python.org/3/library/functions.html
 
 --
 
-- **User defined functions** are functions you create -- this is what we'll be primarily focusing on today
+- **User-defined functions** are functions you create -- this is what we'll be primarily focusing on today
 
 --
 
@@ -136,7 +136,7 @@ https://docs.python.org/3/library/built-ins.html
 
 # B is for Bacon Bill
 
-We'll explore methods and functions through restaurant bill creator.
+We'll explore methods and functions through a restaurant bill creator
 
 
 ---
@@ -255,7 +255,7 @@ print_bill()
 ```py
 >>> def print_header():
 ...   print('B IS FOR BACON')
-...
+..
 >>> print_header
 
 # what's the REPL report back here?
@@ -286,7 +286,7 @@ A simple, interactive computer programming environment that:
 ---
 
 
-### Many programming languages provide REPLs.
+### Many programming languages provide REPLs
 
 Simple math using JavaScript (`node`), Ruby (`irb`), and Python's (`python3`) REPLs:
 
@@ -304,13 +304,13 @@ irb(main):002:0>
 ❯ python3
 Python 3.7.2 (default, Jan 13 2019, 12:50:15)
 [Clang 10.0.0 (clang-1000.11.45.5)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
+Type "help", "copyright", "credits" or "license" for more information
 >>> 3 * 7
 21
 >>>
 ```
 
-Tip: `control+d` will usually exit the REPL.
+Tip: `control+d` will usually exit the REPL
 
 ---
 
@@ -342,11 +342,11 @@ data we pass into a function
 
 --
 
-We wanted to print a blank line.
+We wanted to print a blank line
 
 ---
 
-### Where can find documentation for `print`?
+### Where can we find documentation for `print`?
 
 --
 
@@ -354,18 +354,13 @@ We wanted to print a blank line.
 
 --
 
-### Where can find a list of all of python's built-in functions?
-
---
-
-[https://docs.python.org/3/library/functions.html](https://docs.python.org/3/library/functions.html)
-
-
---
 
 ### What built-in could we use in our python REPL to get `print` documentation?
 
+[https://docs.python.org/3/library/functions.html](https://docs.python.org/3/library/functions.html)
+
 --
+
 
 ```py
 help(print)
@@ -429,7 +424,7 @@ print_bill('Veggie Bacon')
 
 --
 
-It allows us to insert variables into a string.
+It allows us to insert variables into a string
 
 
 ---
@@ -636,7 +631,7 @@ def print_footer(price):
 
 ---
 
-### `print_bill` code:
+### `print_bill` Code:
 
 --
 
@@ -837,7 +832,7 @@ def print_bill(*items):
 
 --
 
-It returns the value of `total` to whomever is calling the function
+It returns the value of `total` to the calling function
 
 --
 
@@ -872,7 +867,7 @@ It would be `None`, which is a special python object representing the absence of
 
 --
 
-Pass total in as an argument to `print_footer` and have it print it out.
+Pass `total` in as an argument to `print_footer` and have it print it out
 
 ---
 
@@ -884,7 +879,7 @@ Pass total in as an argument to `print_footer` and have it print it out.
 def print_bill(*items):
   total = calculate_total(items)
 
-  # ... snip ...
+  # ... snip ..
 
   print_footer(total)
 
@@ -937,7 +932,7 @@ def print_footer(total):
 
 --
 
-- The `f` makes the number a `float`, which is a number that has a decimal place to allow for more precision.
+- The `f` makes the number a `float`, which is a number that has a decimal place to allow for more precision
 - The `2` formats the number with 2 values after the decimal place
 
 --
@@ -946,7 +941,7 @@ def print_footer(total):
 
 --
 
-It would format the number to 4 values after the decimal place.
+It would format the number to 4 values after the decimal place
 
 ---
 layout: true
@@ -960,7 +955,7 @@ layout: true
 
 --
 
-It's a method.
+It's a method
 
 --
 
@@ -968,9 +963,9 @@ It's a method.
 
 --
 
-Functions are executable code not attached to objects.
+Functions are executable code not attached to objects
 
-Methods are executable code attached to objects.
+Methods are executable code attached to objects
 
 ---
 
@@ -1021,7 +1016,7 @@ print
 
 --
 
-Probably.
+Probably
 
 --
 
@@ -1029,12 +1024,12 @@ Probably.
 
 --
 
-At this point, I wouldn't worry about it.
+At this point, I wouldn't worry about it
 
 ---
 layout: true
 
-# More features
+# More Features
 
 ---
 
