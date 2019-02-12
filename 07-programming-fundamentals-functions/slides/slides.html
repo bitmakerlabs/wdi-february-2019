@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data Modelling</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="slides.js"></script>
+    <style type="text/css">
+
+      @import url(slides.css);
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+## *Today's Lesson*
+
+# Methods and Functions
+
+---
+
+
+# Agenda
+
+### about me
+
+### review yesterday's lesson
+
+### functions:
+  - calling
+  - arguments
+  - defaults
+  - variable length number of arguments
+  - return values
+
+### methods
+
+---
+
+
+# Sean Lerner
+
+### Background
+
+- over 25 years industry experience
+- first half in Computer Networking
+- latter half in Software Development
+- primarily work with *Ruby on Rails* and *JavaScript*
+- personal website: [smallcity.ca](http://smallcity.ca)
+
+### Currently
+
+- Senior Software Engineer at ***Cover*** (cover.com),<br>an Insurance Startup
+- Instructor, Web Development Program at<br>Bitmaker / General Assembly
+- Freelance, Personal & Passion Projects
+
+
+
+---
+
+
+# Any question on yesterday's lesson?
+
+#### Basic data types
+  - numbers
+  - strings
+  - None
+  - booleans
+
+#### Variables
+  - assignment
+  - meaningful names
+
+#### Output and Input
+  - print()
+  - input()
+
+#### Control Structures
+  - if / elif / else
+  - while
+
+---
+layout: true
+
+# How functions fit into the overall course
+
+---
+
+--
+
+### Week 1:<br>Git, HTML, CSS
+
+--
+
+## Week 2 (this week!):
+  Monday (yesterday): programming fundamentals: data types, variables, flow control<br>
+--
+  ***Tuesday (today!): functions and methods***<br>
+--
+  Wednesday (tomorrow): collections and iteration<br>
+--
+  Thursday: Problem Solving<br>
+--
+  Friday: Objected Oriented Programming (OOP)<br>
+
+--
+
+### Week 3 and beyond:<br>OOP, Debugging, Databases, Data-Modelling, Frameworks, Templating, Request-Response, Project Planning, APIs, Testing, JavaScript, React
+
+---
+
+Functions and methods are a fundamental part of programming, and it's likely you'll use them in almost all future programs you write.
+
+---
+layout: false
+
+# Built-ins, Functions, Methods
+
+> Routines that store callable code<br>
+    (code that can be executed)
+
+--
+
+- **Built-ins** are always available functions that are built into the python language:<br>
+https://docs.python.org/3/library/built-ins.html
+
+--
+
+- **User defined functions** are functions you create -- this is what we'll be primarily focusing on today
+
+--
+
+- **Methods** are similar to functions, except they're attached to objects
+
+---
+
+# B is for Bacon Bill
+
+We'll explore methods and functions through restaurant bill creator.
+
+
+---
+
+# Requirements
+
+***Create a simple bill for our restaurant.***
+
+--
+
+- we only sell one thing: bacon
+
+--
+
+- limit one per customer
+
+--
+
+- we need a function to print this out for each customer
+
+---
+layout: true
+# Simple Bill
+
+---
+
+## Sample
+
+<pre>
+B IS FOR BACON
+
+-----------------
+2.00 Bacon
+-----------------
+
+Please Come Again!
+</pre>
+
+---
+
+
+## Code
+
+--
+
+```py
+
+# Define method
+
+def print_bill():
+  print()
+  print('B IS FOR BACON')
+  print()
+  print('------------------------')
+  print('2.00 Bacon')
+  print('------------------------')
+  print()
+  print('Please Come Again!')
+  print()
+
+
+# Print three bills
+
+print_bill()
+print_bill()
+print_bill()
+
+```
+
+---
+layout: false
+
+### What was involved in creating this function?
+
+--
+
+- we used the keyword `def` to define the function
+
+--
+
+- `def` was followed by the function name, brackets, and a colon:
+```py
+def print_bill():
+```
+
+--
+
+- the code that makes up the function's body must be indented
+
+--
+
+### Does defining a function also execute it?
+
+--
+
+- no, `def` does not call the function, it only defines it to be called later
+
+
+---
+
+### How do we call (execute) the function?
+
+--
+
+- to call the function, we use the function's name along with round brackets `()`:
+```py
+print_bill()
+```
+
+---
+
+### What happens if we define and then type the function name without round brackets in our REPL?
+
+--
+
+```py
+>>> def print_header():
+...   print('B IS FOR BACON')
+...
+>>> print_header
+
+# what's the REPL report back here?
+```
+
+---
+
+### What's REPL an acronym for?
+
+--
+> READ-EVALUATE-PRINT-LOOP
+
+--
+
+### What is a REPL?
+
+--
+
+A simple, interactive computer programming environment that:
+
+<pre>
+1) provides a prompt to take inputs (READ)
+2) executes the inputs              (EVALUATE)
+3) returns the result               (PRINT)
+4) goes back to `1`                 (LOOP)
+</pre>
+
+---
+
+
+### Many programming languages provide REPLs.
+
+Simple math using JavaScript (`node`), Ruby (`irb`), and Python's (`python3`) REPLs:
+
+```sh
+❯ node
+> 3 * 4
+12
+>
+
+❯ irb
+irb(main):001:0> 3 * 5
+=> 15
+irb(main):002:0>
+
+❯ python3
+Python 3.7.2 (default, Jan 13 2019, 12:50:15)
+[Clang 10.0.0 (clang-1000.11.45.5)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 3 * 7
+21
+>>>
+```
+
+Tip: `control+d` will usually exit the REPL.
+
+---
+
+### What is `print`?
+
+--
+
+a ***built-in*** python function for writing (usually to your screen, but could be used to write to a file, network, printer, etc.)
+
+--
+### What is an `argument`?
+
+--
+
+data we pass into a function
+
+---
+
+### What's an example of an argument we passed into the `print` function?
+
+--
+```py
+'B IS FOR BACON'
+```
+
+--
+
+### Why did we sometimes not pass arguments into `print`?
+
+--
+
+We wanted to print a blank line.
+
+---
+
+### Where can find documentation for `print`?
+
+--
+
+[https://docs.python.org/3/library/functions.html#print](https://docs.python.org/3/library/functions.html#print)
+
+--
+
+### Where can find a list of all of python's built-in functions?
+
+--
+
+[https://docs.python.org/3/library/functions.html](https://docs.python.org/3/library/functions.html)
+
+
+--
+
+### What built-in could we use in our python REPL to get `print` documentation?
+
+--
+
+```py
+help(print)
+```
+
+---
+
+# New Requirement
+
+*** allow us to bill for Veggie Bacon ***
+
+---
+layout: true
+
+# Veggie Bacon
+
+---
+
+## Sample bill with Veggie Bacon
+
+--
+
+<pre>
+B IS FOR BACON
+
+-----------------
+2.00 Veggie Bacon
+-----------------
+
+Please Come Again!
+</pre>
+
+---
+
+
+## Code
+
+--
+
+```py
+def print_bill(item):
+  print()
+  print('B IS FOR BACON')
+  print()
+  print('------------------------')
+  print('2.00 {}'.format(item))
+  print('------------------------')
+  print()
+  print('Please Come Again!')
+  print()
+
+
+print_bill('Bacon')
+print_bill('Veggie Bacon')
+```
+
+---
+
+
+### What does `format` allow us to do with our string?
+
+--
+
+It allows us to insert variables into a string.
+
+
+---
+
+### What happens if we call `print_bill` without passing in an argument?
+
+--
+
+We receive an error:
+```bash
+TypeError: print_bill() missing 1 required positional argument: 'item'
+```
+
+---
+layout: false
+
+# New Requirement
+
+*** Default item to Bacon ***
+
+--
+
+- we sell much more `Bacon` than `Veggie Bacon`
+- make the item default to `Bacon` if no argument is passed in
+
+---
+layout: true
+
+# Default to 'Bacon'
+
+---
+
+
+## Code
+
+--
+
+```py
+def print_bill(item='Bacon'):
+  print()
+  print('B IS FOR BACON')
+  print()
+  print('------------------------')
+  print('2.00 {}'.format(item))
+  print('------------------------')
+  print()
+  print('Please Come Again!')
+  print()
+
+
+print_bill('Veggie Bacon')
+print_bill()
+```
+
+---
+
+### What's the advantage of providing a default item?
+
+--
+
+We don't need to pass in `'Bacon'` every time (our most common use case)
+
+
+---
+layout: false
+
+## New Requirement
+
+*** Add ability to customize the price ***
+
+---
+layout: true
+
+# Flexible Price
+
+--
+
+- we would like the charge a different price for veggie bacon
+
+
+---
+
+
+## Code
+
+--
+
+```py
+def print_bill(price='2.00', item='Bacon'):
+  print()
+  print('B IS FOR BACON')
+  print()
+  print('------------------------')
+  print('{} {}'.format(price, item))
+  print('------------------------')
+  print()
+  print('Please Come Again!')
+  print()
+
+
+print_bill('1.50', 'Veggie Bacon')
+print_bill()
+```
+
+---
+
+### If during the evening, they want to charge $4.00 for bacon, how would they call the `print_bill` function?
+
+--
+
+```py
+print_bill('4.00', 'Bacon')
+```
+
+---
+layout: false
+
+# New Requirement
+
+***we would like to sell more than one item to each customer***
+
+- everything will be $2.00 per item
+- we no longer need flexible pricing
+- the bill will need to calculate the total
+- we no longer need the default item to be 'Bacon'
+
+---
+layout: true
+
+# Multiple Items Per Bill
+
+---
+
+## Sample bill with multiple items
+
+--
+
+<pre>
+B IS FOR BACON
+
+-----------------
+2.00 Bacon
+2.00 Bacon
+2.00 Veggie Bacon
+-----------------
+6.00 TOTAL
+
+Please Come Again!
+</pre>
+
+---
+
+### Let's take this step by step
+
+---
+
+### First, let's create separate functions for the different bill sections:
+
+- create the following functions:
+  - `print_header`
+  - `print_item`
+  - `print_footer`
+
+- and call each of those functions from within `print_bill`
+
+---
+
+### `print_header` Code:
+
+--
+
+```py
+def print_header():
+  print()
+  print('B IS FOR BACON')
+  print()
+  print('------------------------')
+```
+
+---
+
+### `print_item` Code:
+--
+
+```py
+def print_item(price, item):
+  print('{} {}'.format(price, item))
+```
+
+---
+
+### `print_footer` Code:
+
+--
+
+```py
+def print_footer(price):
+  print('------------------------')
+  print('{} TOTAL'.format(price))
+  print()
+  print('Please Come Again!')
+  print()
+```
+
+---
+
+### `print_bill` code:
+
+--
+
+```py
+def print_bill(price='2.00', item='Bacon'):
+  print_header()
+  print_item(price, item)
+  print_footer(price)
+```
+
+---
+
+### Altogether:
+
+--
+
+```py
+def print_header():
+  print()
+  print('B IS FOR BACON')
+  print()
+  print('------------------------')
+
+def print_item(price, item):
+  print('{} {}'.format(price, item))
+
+def print_footer(price):
+  print('------------------------')
+  print('{} TOTAL'.format(price))
+  print()
+  print('Please Come Again!')
+  print()
+
+def print_bill(price='2.00', item='Bacon'):
+  print_header()
+  print_item(price, item)
+  print_footer(price)
+
+print_bill('1.50', 'Veggie Bacon')
+```
+
+---
+
+### Now let's remove the flexible pricing, and change everything back to $2.00
+
+---
+
+### Code
+
+--
+
+```py
+def print_header():
+  print()
+  print('B IS FOR BACON')
+  print()
+  print('------------------------')
+
+def print_item(item):
+  print('2.00 {}'.format(item))
+
+def print_footer(price):
+  print('------------------------')
+  print('{} TOTAL'.format(price))
+  print()
+  print('Please Come Again!')
+  print()
+
+def print_bill(item='Bacon'):
+  print_header()
+  print_item(item)
+  print_footer()
+
+print_bill('Veggie Bacon')
+```
+
+---
+
+### Now let's remove the default item
+
+---
+
+### Code
+
+--
+
+```py
+def print_header():
+  print()
+  print('B IS FOR BACON')
+  print()
+  print('------------------------')
+
+def print_item(item):
+  print('2.00 {item}'.format(item))
+
+def print_footer():
+  print('------------------------')
+  print('2.00 TOTAL')
+  print()
+  print('Please Come Again!')
+  print()
+
+def print_bill(item):
+  print_header()
+  print_item(item)
+  print_footer()
+
+print_bill('Veggie Bacon')
+```
+---
+
+### Now let's add the ability to pass in multiple items
+
+---
+
+### Code
+
+
+```py
+def print_bill(*items):
+  print_header()
+
+  for item in items:
+    print_item(item)
+
+  print_footer()
+
+print_bill('Bacon', 'Bacon', 'Veggie Bacon')
+```
+
+---
+
+### What does the `*` in `*items` allow us to do with our arguments?
+
+--
+
+It allows us to pass in any number of arguments and puts them into a single `list` called `items`
+
+--
+
+### What does `for item in items:` do?
+
+--
+
+- It loops through each element in our list called `items`
+
+- It creates a temporary local variable called `item` that is used for the iteration of the loop
+
+- It assigns the `item` variable the value of the element it is currently iterating over
+
+---
+
+### Now let's properly total the bill
+
+Let's create a separate function for totalling the bill called `calculate_total`
+
+---
+
+### Code
+
+
+```py
+def calculate_total(items):
+  total = 0
+
+  for item in items:
+    total = total + 2.00
+
+  return total
+```
+
+---
+
+### We'll need to call `calculate_total` from our `print_bill` function
+
+--
+
+### Code
+
+--
+
+```py
+def print_bill(*items):
+  total = calculate_total(items)
+
+  print_header()
+
+  for item in items:
+    print_item(item)
+
+  print_footer()
+```
+
+---
+
+### What does `return` do in `calculate_total`?
+
+--
+
+It returns the value of `total` to whomever is calling the function
+
+--
+
+### What does `total =` do in the statement `total = calculate_total(items)`
+
+It assigns the return value of `calculate_total` to the variable `total`
+
+--
+
+### What can we do to see if `total` is the correct value?
+
+--
+
+We can print total out after we calculate it:
+
+```py
+total = calculate_total(items)
+print(total)
+```
+
+---
+
+### What would the return value of our function be if we didn't say `return` at the end of it?
+
+--
+
+It would be `None`, which is a special python object representing the absence of a value
+
+---
+
+### How do make the footer print out the correct total?
+
+--
+
+Pass total in as an argument to `print_footer` and have it print it out.
+
+---
+
+### Code
+
+--
+
+```py
+def print_bill(*items):
+  total = calculate_total(items)
+
+  # ... snip ...
+
+  print_footer(total)
+
+def print_footer(total):
+  print('------------------------')
+  print('{} TOTAL'.format(total))
+  print()
+  print('Please Come Again!')
+  print()
+```
+
+---
+
+Currently our footer looks like this:
+
+```plain
+------------------------
+6.0 TOTAL
+
+Please Come Again!
+```
+
+--
+
+### How do we format our price with the correct number of decimals?<br>(so ***6.0*** prints out as ***6.00***)
+
+--
+
+We can use `.format` on our string with `:.2f` as the format
+
+---
+
+### Code
+
+--
+
+
+```py
+def print_footer(total):
+  print('------------------------')
+  print('{:.2f} TOTAL'.format(total))
+  print()
+  print('Please Come Again!')
+  print()
+```
+
+---
+
+### What does `:.2f` do to the number?
+
+--
+
+- The `f` makes the number a `float`, which is a number that has a decimal place to allow for more precision.
+- The `2` formats the number with 2 values after the decimal place
+
+--
+
+### What would happen if we used `:.4f` instead?
+
+--
+
+It would format the number to 4 values after the decimal place.
+
+---
+layout: true
+
+# Functions vs Methods
+
+---
+
+
+### Is `.format` a ***function*** or a ***method***?
+
+--
+
+It's a method.
+
+--
+
+### What's the difference between a function and a method?
+
+--
+
+Functions are executable code not attached to objects.
+
+Methods are executable code attached to objects.
+
+---
+
+
+### What kind of object is `.format` attached to?
+
+```py
+'{:.2f} TOTAL'.format(total)
+```
+
+--
+
+A string
+
+--
+
+### How can we verify what type of object `'{:.2f} TOTAL'` is?
+
+--
+
+```py
+'{:.2f} TOTAL'.__class__
+```
+
+---
+
+### How can we verify what type of object `.format` is?
+
+--
+
+```py
+''.format
+```
+
+--
+
+### How can we verify what type of object `print` is?
+
+--
+
+```py
+print
+```
+
+---
+
+### Will people (including us instructors) accidentally mix up the terms `function` and `method` and add to the confusion?
+
+--
+
+Probably.
+
+--
+
+### Should you worry about the difference between what is technically a function and what is technically a method?
+
+--
+
+At this point, I wouldn't worry about it.
+
+---
+layout: true
+
+# More features
+
+---
+
+
+--
+
+### - create a function to calculate tax (0.13 * the total bill)
+
+--
+
+### - what else could be separated out into their own functions?
+
+--
+- a separate function to print the line
+
+--
+- a separate function responsible for formatting the total amount
+
+--
+- separating the calculating and printing into distinct functions
+
+---
+layout: true
+
+# Fancy Bill
+
+---
+
+### What would be involved to create a fancy bill?
+
+--
+
+```plain
+             B IS FOR BACON
+           1099 Yonge Street
+              416-798-1185
+
+
+Dine In                   Order:      92
+4:42 PM                   Table:      12
+2019-02-03           Party Size:       6
+                         Server:   Harry
+----------------------------------------
+
+2   Soft Drink                      1.00
+1   Ice Tea                         2.00
+2   Red Wine                        2.00
+6   Burger                          5.00
+2   Cheese                          1.00
+3   Large Fries                     3.00
+1   Cupcake                         3.00
+----------------------------------------
+                      Sub-Total:   19.00
+                            Tax:    2.50
+----------------------------------------
+                          TOTAL:   21.50
+
+
+           Please Come Again!
+```
+
+---
+layout: false
+
+# Wrap-up
+
+What we covered:
+
+- functions
+- arguments
+  - defaults
+  - variable length number of arguments
+- calling functions
+- return values
+- methods
+    </textarea>
+
+  </body>
+</html>
