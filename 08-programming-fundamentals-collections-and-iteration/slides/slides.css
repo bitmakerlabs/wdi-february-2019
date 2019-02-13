@@ -67,8 +67,33 @@ a {
 #refactor {
   color: green; }
 
-img {
-  width: 100%; }
+.no-header-bottom h1 {
+  margin-bottom: 0; }
+
+table {
+  font-family: monospace; }
+  table td {
+    padding: 0 1em; }
+
+.table ul code {
+  width: 6em; }
+
+th {
+  width: 20%;
+  color: white;
+  background: darkblue; }
+
+table.treated {
+  border-collapse: collapse;
+  border: 3px solid black; }
+  table.treated td {
+    border: 1px solid grey; }
+
+blockquote {
+  border-left: 20px solid lightgrey;
+  padding-left: 20px;
+  position: relative;
+  left: -40px; }
 
 /*
  * build-files/fonts.sass */
