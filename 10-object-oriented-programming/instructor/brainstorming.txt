@@ -1,0 +1,52 @@
+- lesson
+- assignment
+  state:
+   - completed true/false
+   - date/time assigned
+   - date/time submitted
+   - contents
+  methods:
+    - submit
+
+- post
+  state
+    - time
+    - comments
+    - content
+  behaviour
+    - comment on
+    - like
+    - share
+
+- advertisement
+  state
+    - content
+    - picture
+    - video
+    - URL
+    - company
+    - cents_per_click
+  behaviour
+    - click
+    - rudely_interrupt
+
+- livestream
+  state
+    - video stream
+    - title
+    - person
+    - comment stream
+
+  behaviour
+
+comment stream
+
+
+
+
+
+
+
+
+
+
