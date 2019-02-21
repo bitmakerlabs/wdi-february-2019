@@ -4,22 +4,8 @@ Today we'll be going further in depth into Object Oriented Programming to see ho
 
 ## Agenda
 
-* [Review of Classes and Instances](#review-of-classes-and-instances) (15 mins)
-* [Class Variables and Class Methods](#class-variables-and-class-methods) (45-60 mins)
-* [Modules](#modules) (0-15 mins)
+* Classes and Instances
+* Working with different Objects that have the same properties and impelement the same methods
+* Class variables and methods
+* Making objects comparable with `__lt__`, `__gt__` and `__eq__`
 
-## Review of Classes, Objects, and Instances
-
-* Implement Pizzeria program
-
-## Class Variables and Class Methods
-
-* Implement Library program
-
-## Modules
-
-* Optional if there is time
-
-## Slides
-
-* [Slides](http://bitmakerlabs.s3.amazonaws.com/slides/cohort9/Object-Oriented%20Programming.pdf) - These are old slides and are for Reference Only
