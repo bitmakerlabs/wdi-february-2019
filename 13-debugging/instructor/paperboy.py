@@ -7,9 +7,10 @@ class Paperboy:
 
   def calculate_pay(self, houses_delivered):
     pay = 0.25 * houses_delivered
+    ipdb.set_trace()
 
     if houses_delivered > self.quota():
-      pay += 0.25 * houses_delivered - self.quota()
+      pay += 0.25 * (houses_delivered - self.quota())
     elif houses_delivered < self.quota():
       pay -= 2
 
