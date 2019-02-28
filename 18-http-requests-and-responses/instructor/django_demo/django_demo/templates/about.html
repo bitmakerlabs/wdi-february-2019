@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>About</title>
+  </head>
+  <body>
+    <h1>About {{ name.upper }}</h1>
+
+    {% if profile_img_url %}
+      <img src="{{ profile_img_url }}" alt="{{ name }}">
+    {% endif %}
+
+    <h2>Hobbies</h2>
+    <ul>
+      {% for hobby in hobbies %}
+        <li> {{ hobby }} </li>
+      {% endfor %}
+    </ul>
+
+  </body>
+</html>
