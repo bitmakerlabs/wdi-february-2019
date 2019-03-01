@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CRM</title>
+  </head>
+  <body>
+    <h1>Contacts:</h1>
+    <ul>
+      {% for contact in contacts %}
+        <li>
+          <p> {{ contact.full_name }} | {{ contact.email_address }} </p>
+          <p> {{ contact.note }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+
+  </body>
+</html>
