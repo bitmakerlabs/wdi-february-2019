@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Film library</h1>
+  <ul>
+    {% for film in films %}
+      <li>{{ film.title }}</li>
+    {% endfor %}
+  </ul>
+
+  <form method="post" action="{% url 'film_create' %}">
+
+    <div class="field" class="field">
+      <!-- input type: text -->
+    </div>
+
+    <div class="field">
+      <!-- input types: date / time / email / tel / url / color / range / number / search -->
+    </div>
+
+    <div class="field">
+      <!-- textarea -->
+    </div>
+
+    <div class="field">
+      <!-- input radio -->
+    </div>
+
+    <div class="field">
+      <!-- input checkbox -->
+    </div>
+
+
+    <div class="field">
+      <!-- select / option -->
+    </div>
+
+
+    <div class="field">
+      <!-- file -->
+    </div>
+
+    <!-- hidden -->
+
+    <div class="field">
+      <!-- input submit / button -->
+    </div>
+
+  </form>
+{% endblock %}
