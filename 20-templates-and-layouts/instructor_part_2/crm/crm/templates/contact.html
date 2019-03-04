@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{{ user.full_name }}</h1>
+  <p>Email: {{ user.email_address }}</p>
+  <p>Note: {{ user.note }}</p>
+  <p><a href="{% url 'contacts_page' %}">back to all contacts</a></p>
+{% endblock %}

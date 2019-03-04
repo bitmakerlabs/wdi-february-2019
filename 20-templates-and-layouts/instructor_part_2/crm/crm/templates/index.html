@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main class='site-content'>
+    <h1 class='contacts-summary'>
+      There are
+      <span class="contacts-count">{{ contacts.count }}</span>
+      contacts
+    </h1>
+    <ul>
+      {% for contact in contacts %}
+        <li class='contact'>
+          <p>
+            <a href="{% url 'contact_details_page' id=contact.id %}">{{ contact.full_name }}</a>
+            ({{ contact.email_address }}) </p>
+        </li>
+      {% endfor %}
+    </ul>
+  </main>
+{% endblock %}

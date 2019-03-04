@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  </head>
+  <body>
+    <header class="site-header">Bitmaker CRM</header>
+    <nav class='site-nav'>
+      <ul>
+        <li><a href="{% url 'contacts_page' %}">Home</a></li>
+        <li><a href="{% url 'about_page' %}">About</a></li>
+      </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class='site-footer'>&copy; Bitmaker 2019</footer>
+
+  </body>
+</html>
