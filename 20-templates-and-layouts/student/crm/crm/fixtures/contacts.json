@@ -1,0 +1,1 @@
+[{"model": "crm.contact", "pk": 1, "fields": {"first_name": "Natalie", "last_name": "Black", "email_address": "natalie@bitmaker.co", "note": "teaches wdi"}}, {"model": "crm.contact", "pk": 3, "fields": {"first_name": "Jeremy", "last_name": "Tupper", "email_address": "jeremy@bitmaker.co", "note": "teaches WDI\r\nlalala"}}]
