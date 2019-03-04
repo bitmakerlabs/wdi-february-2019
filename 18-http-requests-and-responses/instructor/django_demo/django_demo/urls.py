@@ -21,7 +21,7 @@ urlpatterns = [
   path('', views.home_page),
   path('welcome/', views.welcome_page),
   path('about/', views.about_page),
-  path('about_the_owner', views.about_owner),
+  path('about_the_owner/', views.about_owner),
 ]
 
 
