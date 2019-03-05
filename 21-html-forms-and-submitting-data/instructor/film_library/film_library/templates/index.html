@@ -11,38 +11,89 @@
 
     <div class="field" class="field">
       <!-- input type: text -->
+      <label for="film-title">
+        <span>Title</span>
+        <input id="film-title" type="text" name='title' placeholder='e.g. Moonlight'>
+      </label>
     </div>
 
     <div class="field">
       <!-- input types: date / time / email / tel / url / color / range / number / search -->
+      <!-- <input type="date">
+      <input type="time">
+      <input type="email">
+      <input type="tel">
+      <input type="url">
+      <input type="color">
+      <input type="range">
+      <input type="number">
+      <input type="search"> -->
     </div>
 
     <div class="field">
       <!-- textarea -->
+      <label for="film-description">Synopsis:</label>
+      <textarea name="description" id="film-description" rows='10' cols='30' placeholder="e.g. Once upon a time..."></textarea>
     </div>
 
     <div class="field">
       <!-- input radio -->
+      <fieldset>
+        <legend>Rating</legend>
+
+        <label for="rating-1">
+          <span>1 star</span>
+          <input id='rating-1' type="radio" name='rating' value='1'>
+        </label>
+
+        <label for="rating-2">
+          <span> 2 Stars </span>
+          <input id='rating-2' type="radio" name='rating' value='2'>
+        </label>
+
+        <label for="rating-3">
+          <span>3 Stars</span>
+          <input id='rating-3' type="radio" name='rating' value='3'>
+        </label>
+      </fieldset>
     </div>
 
     <div class="field">
       <!-- input checkbox -->
+      <!-- <input type="checkbox"> -->
     </div>
 
 
     <div class="field">
       <!-- select / option -->
+      <label for="film-country">
+        <span>Country</span>
+        <select name="country" id="film-country">
+          <option value="">Please select a country</option>
+          <option value="CA">Canada</option>
+          <option value="GB">United Kingdom</option>
+          <option value="US">United States</option>
+          <option value="JP">Japan</option>
+        </select>
+      </label>
     </div>
 
 
     <div class="field">
       <!-- file -->
+      <!-- <input type="file"> -->
     </div>
 
     <!-- hidden -->
+    <!-- <input type="hidden" name='loyalty-points-number' value="whatever"> -->
 
     <div class="field">
       <!-- input submit / button -->
+      <!-- <input type="submit" value='Save film'> -->
+      <button type='submit'>
+        Save film
+        <img src="http://placekitten.com/100/100" alt="">
+      </button>
     </div>
 
   </form>
