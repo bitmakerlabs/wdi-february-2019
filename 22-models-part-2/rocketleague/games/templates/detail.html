@@ -1,0 +1,11 @@
+
+<h1>Game Details</h1>
+
+<p>{{ game.get_game_result }}</p>
+<p>Blue score: {{ game.blue_score }}</p>
+<p>Orange score: {{ game.orange_score }}</p>
+<p>
+  {% if game.overtime %}
+    Length of overtime: {{ game.overtime_length }}
+  {% endif %}
+</p>

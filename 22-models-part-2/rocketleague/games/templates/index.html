@@ -1,0 +1,12 @@
+
+<h1>All Games</h1>
+
+<p>
+  <a href="{% url 'games:new' %}">Record a game</a>
+</p>
+
+{% for game in games %}
+  <p>
+    <a href="{% url 'games:detail' game.id %}">{{ game.get_game_result }}</a>
+  </p>
+{% endfor %}

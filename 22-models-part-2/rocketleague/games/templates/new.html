@@ -1,0 +1,25 @@
+
+<h1>Record a Game</h1>
+
+<form class="" action="create" method="post">
+  {% csrf_token %}
+  <p>
+    Blue score: <input type="number" name="blue_score" value="">
+  </p>
+  <p>
+    Orange score: <input type="number" name="orange_score" value="">
+  </p>
+  <p>
+    Overtime: No<input type="radio" name="overtime" value="false" checked> Yes<input type="radio" name="overtime" value="true">
+  </p>
+  <p>
+    Overtime seconds: <input type="number" name="overtime_length" value="0">
+  </p>
+  <p>
+    Description: <input type="text" name="description" value="0">
+  </p>
+
+  <p>
+    <input type="submit" name="" value="Record it">
+  </p>
+</form>
