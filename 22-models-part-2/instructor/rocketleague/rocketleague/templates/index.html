@@ -1,0 +1,13 @@
+
+<h1>All Games</h1>
+
+{% for game in games %}
+  <p>{{ game.description }}</p>
+  <p>
+    Blue score is: {{ game.blue_score }}
+  </p>
+  <p>
+    Orange score is: {{ game.orange_score }}
+  </p>
+  <hr>
+{% endfor %}

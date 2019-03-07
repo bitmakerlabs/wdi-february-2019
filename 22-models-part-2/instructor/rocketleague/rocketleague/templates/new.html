@@ -1,0 +1,21 @@
+
+<h1>Record a game</h1>
+
+<form action="/create" method="post">
+  {% csrf_token %}
+  <!-- <p>
+    Description: <input type="text" name="description" value="">
+  </p>
+
+  <p>
+    Blue score: <input type="number" name="blue_score" value="">
+  </p>
+
+  <p>
+    Orange score: <input type="number" name="orange_score" value="">
+  </p> -->
+
+  {{ form.as_p }}
+
+  <input type="submit" name="" value="Record it!">
+</form>
