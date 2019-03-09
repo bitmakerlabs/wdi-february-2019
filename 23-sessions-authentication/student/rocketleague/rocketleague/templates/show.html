@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Game show page</h2>
+
+<p><a href="{% url 'edit' game.id %}">Edit</a></p>
+
+<p>
+  {{ game.blue_score }} - {{ game.orange_score }}
+</p>
+{% endblock content %}

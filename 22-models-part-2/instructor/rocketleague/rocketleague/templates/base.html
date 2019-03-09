@@ -1,0 +1,26 @@
+
+<h1>Rocket League DB</h1>
+
+<ul>
+  {% if request.user.is_authenticated %}
+    <li><a href="{% url 'logout' %}">Log out</a> (logged in as {{ request.user.username }})</li>
+    <li><a href="{% url 'new' %}">Record a game</a></li>
+  {% else %}
+    <li><a href="{% url 'login' %}">Log in</a></li>
+    <li><a href="{% url 'user_signup' %}">Sign up!</a></li>
+  {% endif %}
+</ul>
+
+<div>
+  {% if messages %}
+    {% for message in messages %}
+      <p class="{{ message.tags }}">
+        {{ message }}
+      </p>
+    {% endfor %}
+  {% endif %}
+</div>
+
+{% block content %}{% endblock content %}
+
+<footer>Copyright DM 2019</footer>
