@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 from rocketleague.models import Game, GameForm
 
@@ -15,6 +16,7 @@ def index(request):
     return HttpResponse(response)
 
 
+@login_required
 def new(request):
     context = {
         'form': GameForm(),
@@ -23,6 +25,7 @@ def new(request):
     return HttpResponse(response)
 
 
+@login_required
 def create(request):
     form = GameForm(request.POST)
     if form.is_valid():
@@ -81,3 +84,37 @@ def signup_create(request):
         context = { 'form': form }
         response = render(request, 'registration/signup.html', context)
         return HttpResponse(response)
+
+
+
+
+# Hashing example
+'''
+Sign up as:
+Username: my_user
+Password: cheese
+
+Django stores `cheese` as a "hash digest":
+Username: my_user
+Password: 8gfd76h58df6th589ds5fg7sdffg0f7834gt
+Salt: apple
+Password becomes: hash(applemy_user)
+
+Sign in attempt:
+Username: my_user
+Password: cheesd
+
+Django hashes password attempt and compares against my_user's password digest.
+cheesd -> 56fr23ftyguyegrctn8ewrtyv7w4t87w4tb7
+cheese -> 8gfd76h58df6th589ds5fg7sdffg0f7834gt
+
+--> Not the same! Don't let them log in.
+
+Sign in attempt:
+Username: my_user
+Password: cheese
+
+Django hashes password attempt and compares against my_user's password digest.
+cheese -> 8gfd76h58df6th589ds5fg7sdffg0f7834gt
+cheese -> 8gfd76h58df6th589ds5fg7sdffg0f7834gt
+'''
