@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.forms import UserCreationForm
 
 from rocketleague.models import Game, GameForm
 
@@ -56,3 +57,27 @@ def edit(request, game_id):
             context = { 'form': form, 'game': game }
             response = render(request, 'edit.html', context)
             return HttpResponse(response)
+
+
+def signup(request):
+    form = UserCreationForm()
+    context = { 'form': form }
+    response = render(request, 'registration/signup.html', context)
+    return HttpResponse(response)
+
+
+def signup_create(request):
+    # put user data into form
+    form = UserCreationForm(request.POST)
+    # check if form is valid
+    if form.is_valid():
+        # if so, create a user
+        new_user = form.save()
+        # !!! @TODO automatically log in user
+        # redirect after successful user creation
+        return HttpResponseRedirect('/')
+    else:
+        # if not, render the same page with the filled-out form
+        context = { 'form': form }
+        response = render(request, 'registration/signup.html', context)
+        return HttpResponse(response)
