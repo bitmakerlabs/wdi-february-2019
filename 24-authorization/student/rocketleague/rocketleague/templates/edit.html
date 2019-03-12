@@ -1,0 +1,9 @@
+
+<h2>Edit a game</h2>
+
+{{ form.errors }}
+<form action="{% url 'edit' game.id %}" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" name="" value="Update game">
+</form>

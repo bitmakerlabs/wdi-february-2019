@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>All games</h2>
+{% for game in games %}
+  <p><a href="{% url 'show' game.id %}">{{ game.description }}</a></p>
+  <p>
+    Blue score is: {{ game.blue_score }}
+  </p>
+  <p>
+    Orange score is: {{ game.orange_score }}
+  </p>
+  <hr>
+{% endfor %}
+{% endblock content %}

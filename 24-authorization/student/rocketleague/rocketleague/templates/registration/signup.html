@@ -1,0 +1,14 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Signup page</h1>
+
+<form action="{% url 'signup_create' %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" name="" value="Sign up">
+</form>
+
+{% endblock content %}
