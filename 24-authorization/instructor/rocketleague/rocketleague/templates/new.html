@@ -5,7 +5,7 @@
 
 <h1>Record a game</h1>
 
-<form action="/create" method="post">
+<form action="{% url 'create' %}" method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" name="" value="Record it!">

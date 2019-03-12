@@ -12,6 +12,15 @@
   {% endif %}
 </ul>
 
+<div class="">
+  <p><i>You've hit the index page {{ request.session.index }} times.</i></p>
+  <p><i>You've hit the show game page {{ request.session.show }} times.</i></p>
+</div>
+
+{% for message in messages %}
+  <p>{{ message }}</p>
+{% endfor %}
+
 {% block content %}{% endblock content %}
 
 <footer>Copyright DM 2019</footer>
