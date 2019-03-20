@@ -37,7 +37,7 @@ Software written for other software to interact with
 
 --
 
-- tomorow you'll learn about turning a django app into an API
+- tomorrow you'll learn about turning a django app into an API
 ---
 
 ## API: Many levels
@@ -257,7 +257,7 @@ a single file python program that will use the 'egg' we develop (lay) and displa
 
 ### 3. Django app:
 
-a simple django app that will also use the bike share package. It will accpet an address from a form and provide the directions as a web page
+a simple django app that will also use the bike share package. It will accept an address from a form and provide the directions as a web page
 ---
 
 ## Why separate python and django apps?
@@ -288,7 +288,7 @@ print('test')
 ## Populate program with output
 --
 
-We'll hardcode the expected output first and then work towards dynmically generating it
+We'll hard-code the expected output first and then work towards dynamically generating it
 
 `python/main.py`:
 
@@ -318,7 +318,7 @@ print("85 SIMCOE ST is on the left.")
 ---
 ## Create a 'bike_share' package
 
-This will make easier to use the code within both the vanilla python progam and the django app
+This will make easier to use the code within both the vanilla python program and the django app
 
 --
 
@@ -903,7 +903,7 @@ class MapQuestAPI:
 ---
 ## MapQuestAPI class after data exploration
 
-Modify the class to return the appopriate value.
+Modify the class to return the appropriate value.
 
 --
 
@@ -1018,7 +1018,7 @@ def statuses(cls):
 ## `NearestStation` implementation steps
 
 - have the `__init_-` method accept the current location
-- setup a `station_distances` dict to store the `station_id` and disance from current location
+- setup a `station_distances` dict to store the `station_id` and distance from current location
 - loop through bike share station statuses
 - if station has bikes:
   - save the station_id and for now just make the distance from current location a `1`
@@ -1361,7 +1361,7 @@ Any new terminal will automatically read your startup script
 
 If you're confused as to what terminals have the environment variable set, you can just close all your terminals and terminal program and any new windows opened from that point will have the new env var set
 ---
-## Reference the env varfrom the map quest class
+## Reference the env var from the map quest class
 
 --
 
@@ -1424,7 +1424,7 @@ django-admin startproject nearest_bike_share
 ## Create a django project
 --
 
-Rename the `nearest_bike_share` directory to `django` (to differenciate it from the python program):
+Rename the `nearest_bike_share` directory to `django` (to differentiate it from the python program):
 
 ```sh
 mv nearest_bike_share django
@@ -1440,7 +1440,7 @@ This is only the silence the database warnings. We won't use the database for th
 python manage.py migrate
 ```
 
-Rename directory to django (to differenciate it from the python program):
+Rename directory to django (to differentiate it from the python program):
 
 ```sh
 mv nearest_bike_share django
@@ -1596,7 +1596,7 @@ def main(request):
   return HttpResponse(template.render(context, request))
 ```
 ---
-## Import bikeshare package
+## Import bike_share package
 --
 
 `django/nearest_bike_share/views.py`:
