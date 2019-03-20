@@ -1,0 +1,20 @@
+<h1>DIRECTIONS</h1>
+
+<h2>CURRENT LOCATION</h2>
+<pre>
+  {{ current_location }}
+</pre>
+
+<h2>NEAREST STATION</h2>
+<pre>
+  {{ nearest_station }}
+</pre>
+
+<h2>DIRECTIONS</h2>
+{% for direction in directions %}
+  <h2>{{ direction|narrative }}</h2>
+{% endfor %}
+
+<hr>
+
+{% include 'address.html' %}

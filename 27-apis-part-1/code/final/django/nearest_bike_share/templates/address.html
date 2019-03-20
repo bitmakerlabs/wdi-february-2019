@@ -1,0 +1,9 @@
+<h2>{{ number_of_stations }} stations exist</h2>
+
+<h1>Enter your address:</h1>
+
+<form action="{% url 'main' %}" method="post">
+  {% csrf_token %}
+  <input type="text"   name="address">
+  <input type="submit" value="Directions">
+</form>

@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson Slide Show</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="slides.js"></script>
+    <style type="text/css">
+
+      @import url(slides.css);
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+## API: Application Programming Interface
+
+--
+
+Software written for other software to interact with
+---
+
+## Agenda
+
+- About APIs
+- JSON
+- Build a package that incorporates the Bike Share and Map Quest APIs
+- Using the `requests` package to call APIs
+- Use this package in a python program
+- Use this package in a django app
+---
+
+## Today and Tomorrow
+
+--
+
+- today is about consuming APIs
+
+--
+
+- tomorow you'll learn about turning a django app into an API
+---
+
+## API: Many levels
+
+APIs exist at many levels of the software stack:
+
+For example:
+
+- operating systems have APIs
+- programming languages have APIs
+- programming libraries have APIs
+- web based systems have APIs
+
+--
+
+Today we'll be focused on interacting with web based APIs.
+---
+
+## API vs Non-API
+
+APIs make it (relatively) easy to interact with other programs.
+
+For example, let's use `curl`, a basic command line tool for retrieving data over the internet.
+
+Imagine writing a program to parse the results of a joke website.
+
+Compare the results of the two requests.
+
+### Non-API call
+
+```sh
+curl http://www.randomjoke.com/topic/nerd.php
+```
+### API call:
+
+```sh
+curl -X GET "https://sv443.net/jokeapi" -H "joke_category:Programming"
+```
+---
+
+The API call resulted in something like the following:
+
+```json
+{
+  "category": "Programming",
+  "type": "single",
+  "joke": "I've got a really good UDP joke to tell you but I don't know if you'll get it."
+}
+```
+
+The Non API call resulted in something like this:
+
+```
+ <HTML>
+<HEAD>
+ <TITLE>Mefco's Random Joke Server - Nerd Jokes</TITLE>
+
+<-- a bunch of lines snipped -->
+
+<script><!--
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'Cmp001BE52421home',/*URL*/'/images/home.gif',/*URL*/'/images/home-over.gif',/*URL*/'','home');
+
+<-- a bunch more lines snipped -->
+
+      BORDER="0" NATURALSIZEFLAG="3" USEMAP="#backnewMap3" ISMAP ALT="next joke|back to topic list"></P>
+The next phase in the space program is sure to make headlines:<p>
+Scientists are planning to put 300 head of cattle into orbit.  It'll be
+the herd shot round the world.
+<div align="center">
+
+<-- a bunch more lines snipped -->
+
+</BODY>
+</HTML>
+```
+---
+
+The API call returned data as JSON:
+
+```json
+{
+  "category": "Programming",
+  "type": "single",
+  "joke": "I've got a really good UDP joke to tell you but I don't know if you'll get it."
+}
+```
+
+--
+
+JSON is a  popular format used when sending data via APIs.
+---
+## JSON: JavaScript Object Notation
+
+- a language agnostic format
+
+--
+
+- there are libraries in all popular languages that will parse JSON and convert the data into each language's native data structures
+---
+
+## JSON Data Types:
+
+--
+
+- Number: integer and floats
+
+- String
+
+- Boolean: `true` or `false`
+
+- `null`: empty value
+
+- Array: ordered collection
+
+- Object: key/value collection
+---
+
+## JSON Data Types mapped to Python Classes
+
+<table style='text-align: center'>
+  <tr><th>JSON</th><th>Description</th><th>Python Class</th></tr>
+  <tr><td>Number</td><td style='padding: 10px 100px'>integer or float</td><td>int or float</td></tr>
+  <tr><td>String<br>(must be surrounded by double quotes)</td><td style='padding: 10px 100px'>text</td><td>str</td></tr>
+  <tr><td>Boolean</td><td style='padding: 10px 100px'>boolean</td><td>bool<br>(True or False)</td></tr>
+  <tr><td>null</td><td style='padding: 10px 100px'>empty<br>(absence of value)</td><td>NoneType<br>(None)</td></tr>
+  <tr><td>Array</td><td style='padding: 10px 100px'>ordered collection</td><td>list</td></tr>
+  <tr><td>List</td><td style='padding: 10px 100px'>key/value collection</td><td>dict</td></tr>
+</table>
+---
+## JSON Example
+
+```json
+{
+  "first_name": "John",
+  "last_name": "Smith",
+  "is_alive": true,
+  "age": 27,
+  "address": {
+    "street": "21 2nd Street",
+    "city": "New York",
+    "state": "NY",
+    "postal_code": "10021-3100"
+  },
+  "phone_numbers": [
+    {
+      "type": "home",
+      "number": "212 555-1234"
+    },
+    {
+      "type": "office",
+      "number": "646 555-4567"
+    },
+    {
+      "type": "mobile",
+      "number": "123 456-7890"
+    }
+  ],
+  "children": [],
+  "spouse": null
+}
+```
+---
+## Python `json` package
+
+### From the python REPL
+
+--
+
+Converting a JSON payload (string) to Python:
+
+--
+
+```py
+>>> import json
+>>> bitmaker_json = '{ "school": "Bitmaker", "cohort_size": 13, "school_day": true, "assignments": ["Crowdfunder", "PokeGIFS", "Reinforcing Exercises"] }'
+>>> json.loads(bitmaker_json)
+```
+
+--
+
+Converting Python data to JSON:
+
+--
+
+```p
+>>> bitmaker_python = { 'address': '220 King Street West', 'staff': ['alex', 'faris', 'melissa'] }
+>>> json.dumps(bitmaker_python)
+
+```
+---
+## Directions to the nearest Bike Share app
+
+Today we'll build a program that provides directions to the nearest bike share station.
+
+--
+
+We'll use two APIs:
+
+- Bike Share API
+- Map Quest API
+---
+## We'll build three programs
+
+--
+
+### 1. Bike share package:
+
+a python 'egg' that will hold the code for interacting with the APIs and figure out the closest Bike Share
+
+--
+
+### 2. Python program:
+
+a single file python program that will use the 'egg' we develop (lay) and display the results in the terminal
+
+--
+
+### 3. Django app:
+
+a simple django app that will also use the bike share package. It will accpet an address from a form and provide the directions as a web page
+---
+
+## Why separate python and django apps?
+
+--
+
+- APIs can be tricky to use, and often it's best to make whatever you're working on as simple possible
+
+--
+
+- in this case, a simple python program is a lot easier to troubleshoot than the django framework
+
+--
+
+- once you have a good handle on the API, you can then incorporate your learning into a django app
+---
+## Create a test python program
+--
+
+`python/main.py`:
+
+--
+
+```py
+print('test')
+```
+---
+## Populate program with output
+--
+
+We'll hardcode the expected output first and then work towards dynmically generating it
+
+`python/main.py`:
+
+--
+
+```py
+print("CREATING STATIONS:")
+print("358 stations created")
+print()
+
+print("CURRENT LOCATION:")
+print("Location('220 King Street West, Toronto', 43.647189, -79.38702)")
+print()
+
+print("NEAREST STATION:")
+print("Station(station_id=7382, location=Location('Simcoe St / Adelaide St W, Toronto', 43.6481303, -79.38632))")
+print()
+
+print("DIRECTIONS:")
+print("Start out going west on King St toward Ed Mirvish Way.")
+print("Turn right onto Ed Mirvish Way.")
+print("Ed Mirvish Way becomes Duncan St.")
+print("Turn right onto Adelaide St.")
+print("Turn right onto Simcoe St.")
+print("85 SIMCOE ST is on the left.")
+```
+---
+## Create a 'bike_share' package
+
+This will make easier to use the code within both the vanilla python progam and the django app
+
+--
+
+`bike_share/setup.py`:
+
+--
+
+```py
+from setuptools import setup
+
+setup(name='bike_share')
+```
+
+--
+
+`bike_share/bike_share/__init__.py`:
+
+--
+
+```py
+# empty file to start
+```
+---
+## Install package
+
+From your command line:
+
+`bike_share/`:
+
+```sh
+pip3 install -e .
+```
+---
+## Import `bike_share`
+
+Add an `import` statement to the top of the `main.py` program
+
+--
+
+`python/main.py`:
+
+--
+
+```py
+from bike_share import *
+
+# --- snipped print statements ---
+
+```
+---
+## Create a `Location` skeleton class
+
+--
+
+`bike_share/bike_share/location.py`:
+
+--
+
+
+```py
+class Location:
+  pass
+  ```
+
+--
+
+`bike_share/bike_share/__init__.py`:
+
+--
+
+```py
+from .location import Location
+```
+
+--
+
+`python/main.py`:
+
+--
+
+```py
+location = Location()
+print(location)
+```
+---
+## Test that the location is being instantiated
+
+--
+
+`bike_share/bike_share/location.py`:
+
+--
+
+```py
+def __init__(self):
+  print('creating location')
+```
+---
+## Add location attributes
+
+- `address`: to be pass as argument
+- `lat`: defaults to `None`
+- `lng`: defaults to `None`
+
+--
+
+`bike_share/bike_share/location.py`:
+
+--
+
+```py
+def __init__(self, address, lat = None, lng = None):
+  self.address = f'{address}, Toronto'
+  self.lat     = lat
+  self.lng     = lng
+```
+
+--
+
+`python/main.py`:
+
+--
+
+```py
+location = Location('220 King Street West')
+
+print(location)
+```
+---
+## Print the `location` nicer
+
+Use the `__repr__` dunder method.
+
+--
+
+`bike_share/bike_share/location.py`:
+
+--
+
+```py
+  def __repr__(self):
+    return f'Location{self.address, self.lat, self.lng}'
+```
+---
+## Create a `BikeShareAPI` class
+
+This will be a utility class with methods and we will call the class methods directly on it without ever instantiating it.
+
+--
+
+## Steps:
+
+--
+
+- create the skeleton class
+
+--
+
+- import it into the `__init__.py` file
+
+--
+
+- print out the class in `main.py`
+---
+## Create a `BikeShareAPI` class
+
+--
+
+`bike_share/bike_share/bike_share_api.py`:
+
+--
+
+```py
+class BikeShareAPI:
+  pass
+```
+
+--
+
+`bike_share/bike_share/__init__.py`:
+
+--
+
+```py
+from .bike_share_api import BikeShareAPI
+```
+
+--
+
+`python/main.py`:
+
+--
+
+```py
+print(BikeShareAPI)
+```
+---
+## Add a `stations` method to `BikeShareAPI`
+
+This class method should make an API call to the bikes api and return all the stations.
+
+--
+
+We'll need to:
+
+--
+
+- install the `requests` package
+
+--
+
+- import `requests`
+
+--
+
+- make an http `get` request to the bike share API endpoint that gets all the information about bike share stations
+
+--
+
+- parse the response and return the relevant information
+---
+## Install the `requests` package
+
+--
+
+Terminal:
+
+--
+
+```sh
+pip3 install requests
+```
+---
+## Import `requests` into the `BikeShareAPI` class
+
+--
+
+`bike_share/bike_share/bike_share_api.py`:
+
+--
+
+```py
+import requests
+
+class BikeShareAPI:
+  pass
+```
+---
+## Explore  Bike Share API
+
+Let's look at the API documentation first:
+
+https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-catalogue/#84045f23-7465-0892-8889-7b6f91049b29
+
+--
+
+Once at the docs:
+
+Click the `Bike Share - JSON` to explore the API
+
+Or go directly here: https://tor.publicbikesystem.net/ube/gbfs/v1/
+
+*Note that Firefox works nicely for viewing JSON*
+---
+## Find the stations endpoint
+
+What URL has the station information?
+
+--
+
+### Endpoint:
+
+https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_information
+---
+## Make a `get` request from the BikeShareAPI class
+
+--
+
+`bike_share/bike_share/bike_share_api.py`:
+
+--
+
+```py
+import requests
+
+class BikeShareAPI:
+
+  @classmethod
+  def stations(cls):
+    url      = 'https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_information'
+    response = requests.get(url)
+    print(response)
+```
+---
+## Explore the response with a REPL
+
+--
+
+`bike_share/bike_share/bike_share_api.py`:
+
+--
+
+```py
+class BikeShareAPI:
+
+  @classmethod
+  def stations(cls):
+    url      = 'https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_information'
+    response = requests.get(url)
+*   breakpoint()
+```
+
+### Tips
+
+- dig through the json data to find the station information
+- use `.json()` to convert the body to python data types
+- use `.__class__` to see what object you're working with
+- use `.keys()` to see keys on `dicts`
+- dig through the response on level at a time until desired data is reached
+---
+## Return stations
+
+- convert response to json
+- return nested information in response
+
+--
+
+`bike_share/bike_share/bike_share_api.py`:
+
+--
+
+```py
+@classmethod
+def stations(cls):
+  url      = 'https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_information'
+* response = requests.get(url).json()
+* return response['data']['stations']
+```
+---
+## Print station info in `main.py`
+
+--
+
+`python/main.py`:
+
+--
+
+```py
+stations = BikeShareAPI.stations()
+
+print(stations)
+```
+---
+## Pretty Print station info in `main.py`
+
+--
+
+`python/main.py`:
+
+--
+
+```py
+*from pprint import pprint
+
+stations = BikeShareAPI.stations()
+
+*pprint(stations)
+```
+---
+## Cycle through stations and display just relevant info
+
+Use a REPL find out what info is available
+
+--
+
+`python/main.py`:
+
+--
+
+*First:*
+
+```py
+stations = BikeShareAPI.stations()
+
+*for station in stations:
+* breakpoint()
+```
+
+--
+
+*Then:*
+
+```py
+for station in stations:
+* print(station['station_id'])
+* print(station['lat'])
+* print(station['lon'])
+* print(station['address'])
+```
+---
+## Create a `Station` skeleton class
+
+--
+
+`bike_share/bike_share/station.py`:
+
+--
+
+
+```py
+class Station:
+  pass
+  ```
+
+--
+
+`bike_share/bike_share/__init__.py`:
+
+--
+
+```py
+from .station import Station
+```
+
+--
+
+`python/main.py`:
+
+--
+
+```py
+station = Station()
+print(station)
+```
+---
+## Create an `__init__` method for the Station class
+
+--
+
+`bike_share/bike_share/station.py`:
+
+--
+
+- save the `station_id`
+- save a `Location` that has the `address`, `lat`, and `lng`
+
+--
+
+```py
+from .location import Location
+
+class Station:
+
+  def __init__(self, bike_share_station):
+    self.station_id = bike_share_station['station_id']
+
+    self.location = Location(bike_share_station['address'],
+                             bike_share_station['lat'],
+                             bike_share_station['lon'])
+```
+
+Note the difference as to how we store `longtitude` (`lng`) and the bike_share API provides `longtitude` (`long`).
+This is so our `longtitude` will map nicely to the Map Quest API.
+---
+## Try instantiating a `Station` from `main`
+
+--
+
+`python/main.py`:
+
+--
+
+```py
+bike_share_stations = BikeShareAPI.stations()
+bike_share_station  = bike_share_stations[0]
+station = Station(bike_share_station)
+print(station)
+```
+---
+## Print the `station` nicer
+
+Use the `__repr__` dunder method.
+
+--
+
+`bike_share/bike_share/station.py`:
+
+--
+
+```py
+def __repr__(self):
+  return f'Station(station_id={self.station_id}, location={self.location})'
+```
+---
+## Create a `create_stations` method
+
+- put this in the `Station` class
+- it should use the Bike Share API to get the stations
+- it should save all the stations to the class variable `all_stations`
+- `all_stations` is a `list`
+
+--
+
+```py
+*from .bike_share_api import BikeShareAPI
+from .location       import Location
+
+class Station:
+
+* all_stations = []
+
+  # -- snip --
+
+* @classmethod
+* def create_stations(cls):
+*   for bike_share_station in BikeShareAPI.stations():
+*     cls.all_stations.append(Station(bike_share_station))
+```
+---
+## Call `create_stations` from `main`
+
+--
+
+`python/main.py`:
+
+--
+
+```py
+print('CREATING STATIONS:')
+Station.create_stations()
+print(f'{len(Station.all_stations)} stations created')
+print()
+```
+---
+## Retrieve latitude/longitude for the current location
+
+### Steps
+
+--
+
+- explore the MapQuest API documentation
+- create a `MapQuestAPI` utility class<br>
+  (class methods only, no instantiation)
+- import `requests`
+- setup a `mapquest_api` class variable
+- create a `get_location` class method that accepts an `address` as an argument
+- setup a `params` dict that includes the `key` (mapquest_api) and a `location` (address)
+- make a `get` request to the appropriate endpoint
+- use a REPL to explore the data and find appropriate result
+- return the result
+- modify the `Location` class so that it obtains latitude/longitude from the map quest API if none provided
+---
+## MapQuestAPI class
+
+key = `vhAaLJjtLihoyg0MNY5NxUOdIpDZ76p8`<br>
+endpoint = http://mapquestapi.com/geocoding/v1/address
+--
+
+### The initial class:
+`bike_share/bike_share/map_quest_api.py`:
+
+--
+
+```py
+import requests
+
+class MapQuestAPI:
+
+  mapquest_api = 'vhAaLJjtLihoyg0MNY5NxUOdIpDZ76p8'
+
+  @classmethod
+  def get_location(cls, address):
+    params = {
+      'key':      cls.mapquest_api,
+      'location': address
+    }
+
+    url              = 'http://mapquestapi.com/geocoding/v1/address'
+    map_quest_result = requests.get(url, params=params).json()
+    breakpoint()
+```
+---
+## MapQuestAPI class after data exploration
+
+Modify the class to return the appopriate value.
+
+--
+
+`bike_share/bike_share/map_quest_api.py`:
+
+--
+
+```py
+import requests
+
+class MapQuestAPI:
+
+  mapquest_api = 'vhAaLJjtLihoyg0MNY5NxUOdIpDZ76p8'
+
+  @classmethod
+  def get_location(cls, address):
+    params = {
+      'key':      cls.mapquest_api,
+      'location': address
+    }
+
+    url              = 'http://mapquestapi.com/geocoding/v1/address'
+    map_quest_result = requests.get(url, params=params).json()
+
+*   return map_quest_result['results'][0]['locations'][0]['latLng']
+```
+---
+## Modify `Location` to use MapQuestAPI
+
+- put a conditional in to call the API if `lat` and `lng` aren't provided
+- assign API call result to `self.lat` and `self.lng`
+
+--
+
+`bike_share/bike_share/location.py`:
+
+--
+
+```py
+def __init__(self, address, lat = None, lng = None):
+  self.address = f'{address}, Toronto'
+
+* if lat and lng:
+    self.lat = lat
+    self.lng = lng
+* else:
+*   map_quest_result = MapQuestAPI.get_location(self.address)
+*   self.lat         = map_quest_result['lat']
+*   self.lng         = map_quest_result['lng']
+```
+---
+## Find the nearest station
+
+Now that we have the lat/lng for the current location and bike share stations, we can figure out which bike share station is the closest.
+
+--
+
+### Steps
+
+- create  `NearestStation` class that's responsible for finding the nearest station
+- implement a `BikeShareAPI` class method that retrieves the stations' statuses
+- have `NearestStation` use the `BikeShareAPI` statuses to find out the number of bikes available at each station
+- for each stations with bikes available:
+  - look at the current location and the station's lat/lng and finds the difference
+- returns the station with the smallest difference
+---
+## `NearestStation` boiler plate code
+
+--
+
+`bike_share/bike_share/nearest_station.py`:
+
+--
+
+```py
+class NearestStation:
+  pass
+```
+
+--
+
+`bike_share/bike_share/__init__.py`:
+
+--
+
+```py
+from .nearest_station import NearestStation
+```
+---
+## `BikeShareAPI` statuses
+
+Implement the API call using the usual routine of:
+
+- research
+- initial code
+- test in REPL
+- return appropriate result
+
+--
+
+`bike_share/bike_share/bike_share_api.py`:
+
+--
+
+```py
+@classmethod
+def statuses(cls):
+  url = 'https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_status'
+  return requests.get(url).json()['data']['stations']
+```
+---
+## `NearestStation` implementation steps
+
+- have the `__init_-` method accept the current location
+- setup a `station_distances` dict to store the `station_id` and disance from current location
+- loop through bike share station statuses
+- if station has bikes:
+  - save the station_id and for now just make the distance from current location a `1`
+
+--
+
+`bike_share/bike_share/nearest_station.py`:
+
+--
+
+```py
+def __init__(self, current_location):
+  station_distances = {}
+
+  for status in BikeShareAPI.statuses():
+    if status['num_bikes_available'] > 0:
+      station_id                    = status['station_id']
+      station                       = Station.find(station_id)
+      station_distances[station_id] = 1
+
+  breakpoint() # let's see what station_distances looks like now
+```
+---
+## `calculate_distance` method
+
+Now we'll compare the current location and station distances.
+
+--
+
+`bike_share/bike_share/nearest_station.py`:
+
+--
+
+```py
+from .bike_share_api import BikeShareAPI
+
+class NearestStation:
+
+  def __init__(self, current_location):
+    station_distances = {}
+
+    for status in BikeShareAPI.statuses():
+      if status['num_bikes_available'] > 0:
+        station_id                    = status['station_id']
+        station                       = Station.find(station_id)
+*       station_distances[station_id] = self.calculate_distance(self, current_location, station)
+
+*   pprint(station_distances)
+
+*  def calculate_distance(self, current_location, station):
+*    distance_lat = abs(current_location.lat - station.location.lat)
+*    distance_lng = abs(current_location.lng - station.location.lng)
+*
+*    return distance_lat + distance_lng
+```
+---
+## Create a `find` method on Station
+
+```py
+@classmethod
+def find(cls, station_id):
+  for station in cls.all_stations:
+    if station_id == station.station_id:
+      return station
+```
+---
+## Set `result` to nearest station
+
+Finally we'll set the result of the class to the station with the minimum distance.
+
+--
+
+`bike_share/bike_share/nearest_station.py`:
+
+--
+
+```py
+nearest_station_id = min(station_distances, key=station_distances.get)
+self.result        = Station.find(nearest_station_id)
+```
+---
+## Update `main.py` to use the real nearest station
+
+--
+
+`python/main.py`:
+
+--
+
+```py
+nearest_station = NearestStation(current_location).result
+
+print('NEAREST STATION:')
+print(nearest_station)
+print()
+```
+---
+## Create a `MapQuestAPI` `directions` method
+
+Research -> Code -> REPL -> Return Result
+---
+## `directions` method first attempt
+
+Research -> Code -> REPL -> Return Result
+
+--
+
+`bike_share/bike_share/map_quest_api.py`:
+
+--
+
+```py
+@classmethod
+def directions(cls, current_location, destination):
+  params = {
+    'locations': [
+      { 'latLng': { 'lat': current_location.lat, 'lng': current_location.lng } },
+      { 'latLng': { 'lat': destination.lat,      'lng': destination.lng      } }
+    ]
+  }
+
+  url              = f'https://www.mapquestapi.com/directions/v2/route?key={cls.mapquest_api}'
+  map_quest_result = requests.post(url, params=params).json()
+
+  breakpoint()
+```
+---
+## Use Postman to create proper request
+
+https://www.getpostman.com/
+---
+## `directions` method using postman's code
+
+--
+
+`bike_share/bike_share/map_quest_api.py`:
+
+--
+
+```py
+@classmethod
+def directions(cls, current_location, destination):
+  params = {
+    'locations': [
+      { 'latLng': { 'lat': current_location.lat, 'lng': current_location.lng } },
+      { 'latLng': { 'lat': destination.lat,      'lng': destination.lng      } }
+    ]
+  }
+
+* data             = json.dumps(params)
+  url              = f'https://www.mapquestapi.com/directions/v2/route?key={cls.mapquest_api}'
+* map_quest_result = requests.post(url, data=data).json()
+* breakpoint()
+```
+---
+## `directions` method return value
+
+--
+
+`bike_share/bike_share/map_quest_api.py`:
+
+--
+
+```py
+@classmethod
+def directions(cls, current_location, destination):
+  params = {
+    'locations': [
+      { 'latLng': { 'lat': current_location.lat, 'lng': current_location.lng } },
+      { 'latLng': { 'lat': destination.lat,      'lng': destination.lng      } }
+    ]
+  }
+
+  data             = json.dumps(params)
+  url              = f'https://www.mapquestapi.com/directions/v2/route?key={cls.mapquest_api}'
+  map_quest_result = requests.post(url, data=data).json()
+
+* if map_quest_result['route'].get('legs'):
+*   return map_quest_result['route']['legs'][0]['maneuvers']
+```
+---
+## Update `main.py` to display the real directions
+
+--
+
+`python/main.py`:
+
+--
+
+```py
+directions = MapQuestAPI.directions(current_location, nearest_station.location)
+print('DIRECTIONS:')
+
+if directions:
+  for direction in directions:
+    print(direction['narrative'])
+else:
+  print('Could not find directions')
+```
+---
+
+## Keep secret keys out of your repo
+
+--
+
+- uploaded secret keys (i.e. to github) are vulnerable to nefarious actors
+
+--
+
+- keys linked to a credit card are especially sought after
+
+--
+
+- bots search github for keys and use them
+
+--
+
+- former bitmaker students have been attacked and owed money
+---
+
+## How to handle secret keys
+
+--
+
+- the simplest solution is to move keys into environment variables
+
+--
+
+- share keys with your team via a secure channel
+---
+
+## What's an environment?
+
+--
+
+All programs execute in an *environment*.
+
+--
+
+When you open your terminal, an environment is setup.
+
+--
+
+Try from the command line:
+
+```sh
+env
+```
+
+--
+
+Here you'll see a list of the currently set environment variables.
+
+Some may be familiar, with `HOME`, `USER` and `PWD`.
+
+--
+
+Try changing into a different directory and running `env` again.
+
+Did `PWD` change?
+---
+
+## Python Environment
+
+When python starts, it uses the environment it was started in, and then adds its own environment variables.
+
+--
+
+We can see the python environment by going into a REPL:
+
+```py
+>>> import os
+>>> os.environ
+```
+
+--
+
+To see a more readable output:
+
+```py
+>>> from pprint import pprint
+>>> pprint(dict(os.environ), width=1)
+```
+---
+## Move map quest key to environment variable
+
+Open the appropriate startup script in your editor<br>
+(depends on what shell you're using)
+
+### Bash
+
+#### Mac
+
+```sh
+~/.bash_profile
+```
+
+#### Linux
+
+```sh
+~/.bashrc
+```
+
+### Zsh
+
+```sh
+~/.zshrc
+```
+---
+## Add the environment variable
+
+`~/.bash_profile` or `~/.bashrc` or `~/.zshrc`:
+
+```sh
+export MAP_QUEST=vhAaLJjtLihoyg0MNY5NxUOdIpDZ76p8
+```
+---
+
+## Then source the appropriate startup config script
+
+From your terminal:
+
+```sh
+source ~/.bash_profile
+source ~/.bashrc
+source ~/.zshrc
+```
+
+--
+
+Note that only your current terminal will have the new profile.
+
+You'll need to source each terminal window separately
+
+--
+
+Any new terminal will automatically read your startup script
+
+--
+
+If you're confused as to what terminals have the environment variable set, you can just close all your terminals and terminal program and any new windows opened from that point will have the new env var set
+---
+## Reference the env varfrom the map quest class
+
+--
+
+`bike_share/bike_share/map_quest_api.py`:
+
+--
+
+```py
+import json
+import requests
+*import os
+
+class MapQuestAPI:
+* mapquest_consumer_key = os.environ.get('MAP_QUEST')
+
+  # -- snip --
+```
+---
+## Making failure cases more graceful
+
+`bike_share_api.py`:
+
+```py
+*import socket
+*import sys
+
+class BikeShareAPI:
+
+  def stations(cls):
+*   response = cls.get(url)
+*   data     = response.json()
+*   return data['data']['stations']
+
+  def statuses(cls):
+*   response = cls.get(url)
+*   data     = response.json()
+*   return data['data']['stations']
+
+* @classmethod
+* def get(cls, url):
+*   try:
+*     return requests.get(url)
+*   except socket.error:
+*     print('Request failed')
+*     print('Please ensure network connectivity')
+*     sys.exit(1)
+```
+---
+## Django
+---
+## Create a django project
+--
+
+From your terminal:
+
+```sh
+django-admin startproject nearest_bike_share
+```
+---
+## Create a django project
+--
+
+Rename the `nearest_bike_share` directory to `django` (to differenciate it from the python program):
+
+```sh
+mv nearest_bike_share django
+cd django
+```
+---
+## Migrate the database
+--
+
+This is only the silence the database warnings. We won't use the database for this app.
+
+```sh
+python manage.py migrate
+```
+
+Rename directory to django (to differenciate it from the python program):
+
+```sh
+mv nearest_bike_share django
+```
+---
+## Add app to settings
+
+```py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+*   'nearest_bike_share'
+]
+```
+---
+## Create a `main` app
+
+--
+
+```sh
+python manage.py startapp main
+```
+---
+## Add a root url
+--
+
+`django/nearest_bike_share/urls.py`:
+
+```py
+from django.contrib import admin
+from django.urls import path
+*from . import views
+
+urlpatterns = [
+* path('', views.main, name='main'),
+]
+```
+---
+## Setup a main view
+--
+
+
+```sh
+touch nearest_bike_share/views.py
+```
+
+--
+
+```py
+from django.template import loader
+from django.http     import HttpResponse
+
+def main(request):
+  context  = {}
+  template = loader.get_template('address.html')
+  return HttpResponse(template.render(context, request))
+```
+---
+## Create address template
+--
+
+```sh
+mkdir nearest_bike_share/templates
+touch nearest_bike_share/templates/address.html
+```
+
+--
+
+```py
+<h1>Enter your address:</h1>
+
+<form action="{% url 'main' %}" method="post">
+  {% csrf_token %}
+  <input type="text"   name="address">
+  <input type="submit" value="Directions">
+</form>
+```
+---
+## Add mock data
+--
+
+```sh
+touch nearest_bike_share/templates/directions.html
+```
+
+```html
+<h1>DIRECTIONS</h1>
+
+<pre>
+  CREATING STATIONS:
+  358 stations created
+
+  CURRENT LOCATION:
+  Location('220 King Street West, Toronto', 43.647189, -79.38702)
+
+  NEAREST STATION:
+  Station(station_id=7000, location=Location('Fort York  Blvd / Capreol Crt, Toronto', 43.639832, -79.395954))
+
+  DIRECTIONS:
+  Start out going east on King St toward Simcoe St.
+  Turn right onto University Ave/ON-11A.
+  Keep left at the fork to go on ON-11A.
+  Take the Gardiner Expwy W ramp.
+  Merge onto Heritage Highway.
+  Take the Lake Shore Blvd/Spadina Ave exit, EXIT 153.
+  Merge onto Lake Shore Blvd.
+  Turn right onto Dan Leckie Way.
+  Turn right onto Fort York Blvd.
+  55 FORT YORK BLVD is on the right.
+</pre>
+
+<hr>
+
+{% include 'address.html' %}
+```
+---
+## Include address form at bottom of directions
+--
+
+`nearest_bike_share/templates/directions.html:`
+
+```html
+<!-- snip -->
+
+<hr>
+
+{% include 'address.html' %}
+```
+---
+## Process form submission
+--
+
+`django/nearest_bike_share/views.py`:
+
+--
+
+```py
+def main(request):
+
+  address = request.POST.get('address')
+
+  if address:
+    context  = {}
+    template = loader.get_template('directions.html')
+  else:
+    context  = {}
+    template = loader.get_template('address.html')
+
+  return HttpResponse(template.render(context, request))
+```
+---
+## Import bikeshare package
+--
+
+`django/nearest_bike_share/views.py`:
+
+--
+
+```py
+from django.template import loader
+from django.http     import HttpResponse
+*from bike_share import *
+
+def main(request):
+  # -- snip --
+```
+---
+## Create stations
+--
+
+`django/nearest_bike_share/views.py`:
+
+--
+
+```py
+from django.template import loader
+from django.http     import HttpResponse
+from bike_share      import *
+*from pprint          import pprint
+
+*Station.create_stations()
+*pprint(Station.all_stations)
+
+def main(request):
+  # -- snip --
+```
+---
+## Put station content into template
+--
+
+--
+
+`django/nearest_bike_share/views.py`:
+
+```py
+Station.create_stations()
+
+def main(request):
+
+  address = request.POST.get('address')
+* context = { 'number_of_stations': len(Station.all_stations) }
+```
+
+--
+
+`nearest_bike_share/templates/address.html:`
+
+```py
+*<h2>{{ number_of_stations }} stations exist</h2>
+```
+---
+## Use location from form submission
+--
+
+`django/nearest_bike_share/views.py`
+
+--
+
+```py
+def main(request):
+
+  address = request.POST.get('address')
+  context = { 'number_of_stations': len(Station.all_stations) }
+
+  if address:
+*   current_location            = Location(address)
+*   context['current_location'] = current_location
+    template                    = loader.get_template('directions.html')
+  else:
+    template = loader.get_template('address.html')
+
+  return HttpResponse(template.render(context, request))
+```
+
+--
+
+`django/nearest_bike_share/templates/directions.html`:
+
+```py
+{{ current_location }}
+```
+---
+## Put nearest station in directions template
+--
+
+`django/nearest_bike_share/views.py`
+
+--
+
+```py
+def main(request):
+
+  address = request.POST.get('address')
+  context = { 'number_of_stations': len(Station.all_stations) }
+
+  if address:
+    current_location            = Location(address)
+    context['current_location'] = current_location
+*   nearest_station             = NearestStation(current_location).result
+    template                    = loader.get_template('directions.html')
+  else:
+    template = loader.get_template('address.html')
+
+  return HttpResponse(template.render(context, request))
+```
+
+--
+
+`django/nearest_bike_share/templates/directions.html`
+
+--
+
+```py
+{{ nearest_station }}
+```
+---
+## Use real directions
+---
+
+`django/nearest_bike_share/views.py`
+
+--
+
+```py
+from django.http                 import HttpResponse
+from django.template             import loader
+*from django.template.defaulttags import register
+from pprint                      import pprint
+from bike_share                  import *
+
+Station.create_stations()
+
+def main(request):
+
+  address = request.POST.get('address')
+  context = { 'number_of_stations': len(Station.all_stations) }
+
+  if address:
+    current_location            = Location(address)
+    nearest_station             = NearestStation(current_location).result
+*   directions                  = MapQuestAPI.get_directions(current_location, nearest_station.location)
+    context['current_location'] = current_location
+    context['nearest_station']  = nearest_station
+*   context['directions']       = directions
+    template                    = loader.get_template('directions.html')
+  else:
+    template = loader.get_template('address.html')
+
+  return HttpResponse(template.render(context, request))
+
+*@register.filter(name='narrative')
+*def narrative(direction):
+*  return direction['narrative']
+```
+---
+
+`django/nearest_bike_share/templates/directions.html`
+
+```py
+{% for direction in directions %}
+  <h2>{{ direction }}</h2>
+{% endfor %}
+```
+---
+
+## Oauth
+
+https://leaks.wanari.com/2018/04/17/understanding-oauth2-tutorial/
+---
+
+## Wrap Up
+
+- About APIs
+- JSON
+- Build a package that incorporates the Bike Share and Map Quest APIs
+- Using the `requests` package to call APIs
+- Use this package in a python program
+- Use this package in a django app
+    </textarea>
+
+  </body>
+</html>
