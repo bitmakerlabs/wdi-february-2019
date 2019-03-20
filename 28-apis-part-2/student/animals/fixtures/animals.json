@@ -1,0 +1,32 @@
+[
+  {
+    "model": "animals.animal",
+    "pk": 1,
+    "fields": {
+      "species": "Bison",
+      "population": 50000,
+      "region": "The Great Plains of North America",
+      "diet_classification": "herbivore"
+    }
+  },
+  {
+    "model": "animals.animal",
+    "pk": 2,
+    "fields": {
+      "species": "Lynx",
+      "population": 1000,
+      "region": "Northern Canada",
+      "diet_classification": "carnivore"
+    }
+  },
+  {
+    "model": "animals.animal",
+    "pk": 3,
+    "fields": {
+      "species": "Polar Bear",
+      "population": 10000,
+      "region": "Arctic Circle",
+      "diet_classification": "carnivore"
+    }
+  }
+]
