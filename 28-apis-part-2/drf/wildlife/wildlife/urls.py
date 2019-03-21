@@ -23,7 +23,7 @@ from animals.models import Animal
 class AnimalSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Animal
-        fields = ('species', 'population', 'region', 'diet_classification')
+        fields = ('species', 'region')
 
 
 class AnimalViewSet(viewsets.ModelViewSet):
