@@ -1,3 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson Slide Show</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="slides.js"></script>
+    <style type="text/css">
+
+      @import url(slides.css);
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+## JavaScript Fundamentals
+
+```js
+console.log('Intro to JavaScript')
+```
+---
+
+
+## Agenda
+
+<ul style='font-size: 18px'>
+  <li>History</li>
+  <li>Environments</li>
+  <li>Browser</li>
+  <li>JavaScript on Web Pages</li>
+  <li>Node</li>
+  <li>Comments</li>
+  <li>Types and Data Structures</li>
+  <li>Booleans</li>
+  <li>Variables: const, let and var</li>
+  <li>If Statements</li>
+  <li>Ternary</li>
+  <li>Switch Statements</li>
+  <li>Functions</li>
+  <li>Return Values</li>
+  <li>Loops</li>
+  <li>Arrays</li>
+  <li>Objects</li>
+  <li>`this`</li>
+  <li>Scope</li>
+  <li>Coercion</li>
+  <li>Conventions</li>
+  <li>Documentation</li>
+  <li>Search tips</li>
+  <li>JavaScript is everywhere</li>
+</ul>
+---
+
+
 ## History
 
 - created in 10 days by Brendan Eich at Netscape in 1995
@@ -13,10 +67,14 @@
 - was a maligned language for a long time that developers reluctantly learned in order to make browsers interactive
 
 - in the last 5 years it has been evolving quickly and it now the most popular language
+---
+
 
 ## Environments
 
 JavaScript can run in a browser, or on a server / laptop / computer (with `node`)
+---
+
 
 ## Browser
 
@@ -26,9 +84,12 @@ JavaScript can run in a browser, or on a server / laptop / computer (with `node`
 
 - for example:
 
+
 ```js
 document.body.innerHTML = 'hi'
 ```
+---
+
 
 ## JavaScript on Web Pages
 
@@ -54,12 +115,16 @@ document.body.innerHTML = 'hi'
 ```js
 console.log("My execution is coming from app.js")
 ```
+---
+
 
 ## Node
 
 With node, you can run JavaScript on a server.
 
 Node provides APIs to system such as your file system
+---
+
 
 ## Comments
 
@@ -74,6 +139,9 @@ Node provides APIs to system such as your file system
     too
  */
 ```
+---
+
+
 
 ## Types and Data Structures
 
@@ -88,6 +156,8 @@ Function
 Object
 
 Array
+---
+
 
 ## Booleans
 
@@ -106,6 +176,8 @@ Everything else, including:
 
 - '0'
 - [] (empty array)
+---
+
 
 ## Variables: const, let and var
 
@@ -118,6 +190,8 @@ Everything else, including:
 My recommendation:
 
 - always use `const` until you find you have to mutate it, then switch it to `let`
+---
+
 
 ## If Statements
 
@@ -132,6 +206,8 @@ if (colour == 'red') {
   console.log('not sure')
 }
 ```
+---
+
 
 ## Ternary
 
@@ -141,6 +217,8 @@ const author = 'douglas adams';
 const answer = author == 'douglas adams' ? 42 : 'not sure'
 
 ```
+---
+
 
 ## Switch Statements
 
@@ -158,6 +236,8 @@ switch (colour) {
     console.log('not sure');
 }
 ```
+---
+
 
 ## Functions
 
@@ -169,10 +249,14 @@ function add(a, b) {
 
 add(3, 4);
 ```
+---
+
 
 ## Return Values
 
 - undefined is return if no return value is specified
+---
+
 
 ## Loops
 
@@ -186,12 +270,16 @@ while (count <= 10) {
 
 console.log('done');
 ```
+---
+
 
 ## Arrays
 
 ```js
 const colours = ['red', 'blue'];
 ```
+---
+
 
 ## Objects
 
@@ -204,14 +292,20 @@ const colours = {
 colours.red
 colours['blue']
 ```
+---
+
 
 ## `this`
 
 - like self in python
+---
+
 
 ## Scope
 
 - declarations within functions can only see within that function and it's children
+---
+
 
 ## Coercion
 
@@ -219,18 +313,42 @@ colours['blue']
 1000 == '1000' // true
 1000 === '1000' // false
 ```
+---
+
 
 ## Documentation
 
 - Mozilla Developer Network (MDN)
+---
+
 
 ## Search tips
 
 - add `mdn` to your search keywords to get the
 - add `vanilla js` to your search to mitigate `jquery` results
+---
+
 
 ## JavaScript is everywhere
 
 - browser
 - servers
 - desktop applications (using the electron framework)<br>(i.e. open in the inspector in Atom with `Option + Command + i` and you'll see it's just a chrome browser)
+---
+
+
+## Wrap-up
+
+- History
+- Syntax
+  - control flow
+  - types and data structures
+  - functions
+  - loops
+  - this
+  - conventions
+- Documentation
+    </textarea>
+
+  </body>
+</html>
