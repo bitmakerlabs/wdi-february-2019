@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>JavaScript Fundamentals</title>
+    <style type="text/css">
+        * { font-size: 25px; }
+    </style>
+  </head>
+
+  <body>
+    <button onclick="currentTime()">Display Current Time</button>
+    <br><br>
+    <button onclick="nonBlocker()">Tell me when 10 seconds has passed (non-blocking)</button>
+    <br><br>
+    <button onclick="blocker()">Tell me when 10 seconds has passed (blocking)</button>
+    <br><br>
+    <button onclick="output.innerHTML = ''">Clear output</button>
+    <br><br>
+    <div id='output'></div>
+
+    <script>
+
+      const nonBlocker = () => {
+        output.innerHTML += 'non-blocker start' + '<br>'
+
+        const startTime = (new Date).getTime()
+
+        setTimeout(() => {
+          output.innerHTML += 'non-blocker: 10 seconds has passed' + '<br>'
+        }, 10000)
+      }
+
+      const blocker = () => {
+        output.innerHTML += 'blocker start' + '<br>'
+
+        const startTime = (new Date).getTime()
+
+        let timePassed = (new Date).getTime() - startTime
+
+        while (timePassed < 10000) {
+          timePassed = (new Date).getTime() - startTime
+          console.log(timePassed)
+        }
+
+        output.innerHTML += 'blocker: 10 seconds has passed' + '<br>'
+      }
+
+      const currentTime = () => output.innerHTML += Date() + '<br>'
+
+    </script>
+  </body>
+</html>
