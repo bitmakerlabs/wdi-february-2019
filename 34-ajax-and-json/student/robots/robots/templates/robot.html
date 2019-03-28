@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  <img src="http://robohash.org/{{ robot.address }}" alt="{{ robot.name }}">
+
+  <dl>
+    <dt>Name</dt>
+    <dd>{{ robot.name }}</dd>
+
+    <dt>IP Address</dt>
+    <dd>{{ robot.address }}</dd>
+
+    <dt>Lasers?</dt>
+    <dd>{{ robot.lasers }}</dd>
+
+    <dt>Japanese?</dt>
+    <dd>{{ robot.japanese }}</dd>
+  </dl>
+
+  <a href="{% url 'robots_index' %}">Back</a>
+{% endblock %}

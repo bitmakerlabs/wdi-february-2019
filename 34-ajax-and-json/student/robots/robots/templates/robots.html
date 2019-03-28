@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section class="robots">
+    <div class="robots__container">
+      <h2>List of Robots</h2>
+      {% for robot in robots %}
+        <article class="robots__robot">
+          <a href="{% url 'robots_show' id=robot.pk %}">
+            <h2>{{ robot.name }}</h2>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+
+    <aside class="robots__box">
+      <h2>Robot Details:</h2>
+      <div class="robots__box__details"></div>
+    </aside>
+  </section>
+{% endblock %}

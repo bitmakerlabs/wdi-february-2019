@@ -1,0 +1,38 @@
+html, body {
+  margin: 0;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+}
+
+header {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  background-color: #333;
+  color: #FFF;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+main {
+  padding: 50px;
+}
+
+a {
+  color: red;
+}
+
+.robots {
+  display: flex;
+  justify-content: space-between;
+}
+
+.robots__box__details {
+  background-color: #DDD;
+  width: 500px;
+  height: 300px;
+}
