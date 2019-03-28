@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.robots_index),
     path('robots/', views.robots_index),
-    path('robots/<int:id>', views.robots_show),
+    path('robots/<int:id>', views.robots_show, name='robots_show'),
 ]
