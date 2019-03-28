@@ -6,3 +6,6 @@ class Robot(models.Model):
   model_number = models.IntegerField()
   lasers = models.BooleanField(default=False)
   japanese = models.BooleanField(default=False)
+
+  def __str__(self):
+    return self.name
