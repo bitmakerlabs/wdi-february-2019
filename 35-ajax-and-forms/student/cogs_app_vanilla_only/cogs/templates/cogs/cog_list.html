@@ -1,0 +1,17 @@
+{% extends 'cogs_base.html' %}
+
+{% block content %}
+
+  <a href='/cogs/new'>New cog</a>
+
+  <h2>Cogs</h2>
+
+  {% for cog in object_list %}
+    <a href='/cogs/{{ cog.id }}' class='detail'>{{ cog.name }}</a>
+    <a href='/cogs/{{ cog.id }}/edit'>edit</a>
+    |
+    <a href='/cogs/{{ cog.id }}/delete'>delete</a>
+    <br>
+  {% endfor %}
+
+{% endblock %}

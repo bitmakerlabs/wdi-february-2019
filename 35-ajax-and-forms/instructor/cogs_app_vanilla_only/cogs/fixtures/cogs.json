@@ -1,0 +1,18 @@
+[
+  {
+    "model": "cogs.cog",
+    "pk": 1,
+    "fields": {
+      "name": "My new cog",
+      "on_sale": false
+    }
+  },
+  {
+    "model": "cogs.cog",
+    "pk": 2,
+    "fields": {
+      "name": "My new cog 2",
+      "on_sale": false
+    }
+  }
+]

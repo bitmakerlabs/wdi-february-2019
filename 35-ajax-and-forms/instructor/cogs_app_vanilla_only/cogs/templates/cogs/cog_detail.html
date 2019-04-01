@@ -1,0 +1,11 @@
+{% extends 'cogs_base.html' %}
+
+{% block content %}
+
+  <a href='/cogs'><< back to cogs list</a>
+
+  <h1>{{ object.name }}</h1>
+
+  On sale: {{ object.on_sale }}
+
+{% endblock %}

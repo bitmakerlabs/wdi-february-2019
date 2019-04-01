@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 30px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0 .5em;
+}
+
+br {
+  margin-bottom: 5px;
+}
+
+p, hr, nav, main {
+  margin-bottom: 20px;
+
+}
+
+section {
+  font-size: 19px;
+}
+
+main, #detail {
+  width: 47%;
+}
+
+main {
+  float: left;
+}
+
+#detail {
+  float: right;
+}
+
+a.detail {
+  width: 130px;
+  display: inline-block;
+}
+
+nav a {
+  border: 4px solid rgba(0, 0, 0, 0);
+}
+
+nav a.active {
+  border: 4px solid blue;
+  background: blue;
+  color: yellow;
+}
+
+nav a:hover {
+  border: 4px solid darkblue;
+  background: darkblue;
+  color: yellow;
+}
+
+

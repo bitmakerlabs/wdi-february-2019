@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cogs App</title>
+  {% load static %}
+  <script src="{% static 'js/axios/axios.js' %}"></script>
+  <script src="{% static 'js/html/app.js' %}"></script>
+  <script src="{% static 'js/html/cog_list.js' %}"></script>
+  <script src="{% static 'js/html/cog_detail.js' %}"></script>
+  <link rel='shortcut icon' href="{% static 'favicon.ico' %}"/>
+  <link rel='stylesheet' type='text/css' href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <h1>Cogs App</h1>
+
+  <nav>
+    <a href='/'>Home</a>
+    |
+    <a href='/cogs'>Vanilla Cogs</a>
+    |
+    <a href='/cogs_html_api' id='cog_list_html_ajax' class='active'>HTML / Ajax Cogs</a>
+    |
+    <a href='/cogs_json_api' id='cog_list_json_ajax'>JSON / Ajax Cogs</a>
+  </nav>
+
+  <hr>
+
+  <main id='main'>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <section id='single'>
+  </section>
+</body>
+</html>

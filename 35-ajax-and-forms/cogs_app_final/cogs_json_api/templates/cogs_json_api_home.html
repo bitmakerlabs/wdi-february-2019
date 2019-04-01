@@ -1,0 +1,20 @@
+{% extends 'cogs_json_base.html' %}
+
+{% block content %}
+
+  <h2>Cogs</h2>
+
+  <section>
+
+    {% for cog in object_list %}
+      <a href='/cogs/{{ cog.id }}'>{{ cog.name }}</a>
+      |
+      <a href='/cogs/{{ cog.id }}/edit'>edit</a>
+      |
+      <a href='/cogs/{{ cog.id }}/delete'>delete</a>
+      <br>
+    {% endfor %}
+
+  </section>
+
+{% endblock %}

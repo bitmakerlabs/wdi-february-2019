@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cogs App</title>
+  {% load static %}
+  <link rel='shortcut icon' href="{% static 'favicon.ico' %}"/>
+  <link rel='stylesheet' type='text/css' href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <h1>Cogs App</h1>
+
+  <nav>
+    <a href='/' class='active'>Home</a>
+    |
+    <a href='/cogs'>Vanilla Cogs</a>
+  </nav>
+
+  <hr>
+
+  <main id='main'>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<h2>Cogs</h2>
+
+<section>
+
+  {% for cog in object_list %}
+    <a href='/cogs_html_api/{{ cog.id }}' class='cog-html-detail'>{{ cog.name }}</a>
+    <br>
+  {% endfor %}
+
+</section>
