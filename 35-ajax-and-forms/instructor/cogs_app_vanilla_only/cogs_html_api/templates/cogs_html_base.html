@@ -5,6 +5,8 @@
   {% load static %}
   <link rel='shortcut icon' href="{% static 'favicon.ico' %}"/>
   <link rel='stylesheet' type='text/css' href="{% static 'css/style.css' %}">
+  <script type="text/javascript" src="{% static 'js/axios/axios.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/html/app.js' %}"></script>
 </head>
 <body>
   <h1>Cogs App</h1>
@@ -12,9 +14,9 @@
   <nav>
     <a href='/'>Home</a>
     |
-    <a href='/cogs' class='active'>Vanilla Cogs</a>
+    <a href='/cogs'>Vanilla Cogs</a>
     |
-    <a href='/cogs_html_api'>HTML / Ajax Cogs</a>
+    <a href='/cogs_html_api' class='active'>HTML / Ajax Cogs</a>
   </nav>
 
   <hr>

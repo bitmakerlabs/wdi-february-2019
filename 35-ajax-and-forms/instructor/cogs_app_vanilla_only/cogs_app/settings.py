@@ -19,6 +19,7 @@ INSTALLED_APPS = [
   'django.contrib.sessions',
   'django.contrib.messages',
   'django.contrib.staticfiles',
+  'cogs_html_api',
   'cogs',
 ]
 
@@ -38,6 +39,7 @@ TEMPLATES = [
     'DIRS': [
       'cogs_app/templates',
       'cogs/templates',
+      'cogs_html_api/templates',
     ],
     'APP_DIRS': True,
     'OPTIONS': {
