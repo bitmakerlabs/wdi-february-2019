@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Grocery List</title>
+    <meta name="description" content="React project">
+    <meta name="author" content="Rocco Panacci">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+
+    <main class="layout" id="app">
+      <header class="header">
+        <h1>Grocery List</h1>
+      </header>
+
+      <form id="newItem" class="newitem" autocomplete="off">
+        <label for="itemName" class="line-label">New Item</label>
+        <div class="addnew">
+          <input type="text" name="item" id="itemName" class="form-component inpt" placeholder="What do you need?">
+          <input type="submit" value="Add" class="form-component btn">
+        </div>
+      </form>
+
+      <section id="filterCategories">
+        <ul class="filters">
+          <li><input type="radio" name="category" value="all" id="filter0" checked><label for="filter0">all</label></li>
+          <li><input type="radio" name="category" value="meat" id="filter1"><label for="filter1">meat</label></li>
+          <li><input type="radio" name="category" value="prod" id="filter2"><label for="filter2">prod</label></li>
+          <li><input type="radio" name="category" value="dairy" id="filter3"><label for="filter3">dairy</label></li>
+          <li><input type="radio" name="category" value="bakery" id="filter4"><label for="filter4">bakery</label></li>
+        </ul>
+        <form id="newCat" class="cat-new">
+          <input type="text" name="item" id="itemName" class="form-component inpt" placeholder="New Category">
+        </form>
+      </section>
+
+      <ul id="shoppingList" class="shoppinglist">
+        <li class="meat">
+          <button>-</button>
+          <span>3 Steaks</span>
+          <button>+</button>
+        </li>
+        <li class="prod">
+          <button>-</button>
+          <span>4 Apples</span>
+          <button>+</button>
+        </li>
+        <li class="dairy">
+          <button>-</button>
+          <span>1 Milk (1L, 2%)</span>
+          <button>+</button>
+        </li>
+        <li class="bakery">
+          <button>-</button>
+          <span>2 Baguettes</span>
+          <button>+</button>
+        </li>
+      </ul>
+    </main>
+
+    <!-- Load up Babel, React (v16.8.5) & React Router from local files -->
+    <script src="js/react/babel.min.js"></script>
+    <script src="js/react/react.production.v16.8.5.min.js"></script>
+    <script src="js/react/react-dom.production.v16.8.5.min.js"></script>
+    <script src="js/react/react-router.v5.min.js"></script>
+
+    <!-- Our application code -->
+    <script src="js/main.js" type="text/babel"></script>
+  </body>
+</html>
