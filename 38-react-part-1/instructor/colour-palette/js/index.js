@@ -15,14 +15,14 @@ const Channel = ({rgb, handleOnChange}) => {
   const updateRgb = ( val ) => {
     // If it passes the tests, callback to the state setter functions passed down from Swatch (stored in handleOnChange) with the new value 
     if (Number.isInteger(parseInt(val)) && (255 < val == val < 0))
-      handleOnChange(val);
+      handleOnChange(parseInt(val));
   }
 
   // Render
   return (
     <div className="channel">
       <button type="button" className="btn up"   onClick= { () => updateRgb(rgb + 1) }>+</button>
-      <input type="text" className="txt"         onChange={ ({target}) => updateRgb(Number(target.value)) } value={rgb} />
+      <input type="text" className="txt"         onChange={ ({target}) => updateRgb(target.value) } value={rgb} />
       <button type="button" className="btn down" onClick= { () => updateRgb(rgb - 1) }>-</button>
     </div>
   );
