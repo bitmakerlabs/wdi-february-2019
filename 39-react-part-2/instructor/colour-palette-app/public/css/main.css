@@ -1,0 +1,105 @@
+:root {
+  --offsetcolour: rgba(255,255,255, 0.6);
+}
+body {
+  font-family: monospace;
+}
+.app {
+  display: grid;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.palette {
+  display: grid;
+}
+.swatch {
+  color: white;
+  background-color:rgb(0,0,0);
+  font-size: 1.5em;
+  text-align: center;
+  display: grid;
+  grid-gap: 0.25em;
+  grid-template-columns: 1fr 3em 3em 3em 1fr;
+  align-content: center;
+  text-shadow: 0 0 2px #000;
+}
+.swatch > :first-child {
+  text-align: right;
+  align-self: center;
+}
+.swatch > :last-child {
+  text-align: left;
+  align-self: center;
+}
+.channel {
+  text-align: center;
+}
+.btn, .txt {
+  font: 1.5em monospace;
+  display: block;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  border: none;
+}
+.btn:focus, .txt:focus {
+  outline: 2px solid var(--offsetcolour);
+}
+.btn {
+  font-size: 1em;
+  border-radius: 0;
+  line-height: 1.125;
+  background-color: transparent;
+  color: white;
+  text-shadow: 0 0 2px #000;
+}
+.txt {
+  background-color: var(--offsetcolour);
+}
+
+/* Day 2 Styles */
+main > section {
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+}
+form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  font-family: monospace;
+  font-size: 1.3em;
+  background: #fafafa;
+  padding: 2em 15% 1.5em;
+  box-shadow: 0 -0.5em 1em -1px rgba(0, 0, 0, 0.2);
+}
+form input,
+form button {
+  flex: 0 1 30%;
+  font-family: inherit;
+  font-size: inherit;
+}
+form input {
+  background: transparent;
+  border: 0;
+  border-bottom: solid 2px #222;
+  margin-bottom: 1.5em;
+  padding: 0.5em 0;
+}
+form button {
+  max-width: 15em;
+  font-weight: bold;
+  line-height: 2.75em;
+  border: 0;
+  border-radius: 1.375em;
+  background: #eee;
+  box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.4);
+  color: #222;
+  transition: background 0.15s, color 0.15s;
+}
+form button:hover,
+form button:focus {
+  background: #e0e0e0;
+}
