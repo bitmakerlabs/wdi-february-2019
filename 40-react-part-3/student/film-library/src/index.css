@@ -1,0 +1,227 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+figure {
+  margin: 0;
+}
+
+.film-library {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+.film-list {
+  position: relative;
+  flex: 1 0 33.333333%;
+  height: 100%;
+  padding: 3.6em 0 0;
+  overflow-y: scroll;
+  background-color: #f0f0f0;
+}
+
+.film-list > .section-title {
+  width: 33.333333%;
+  left: 0;
+}
+
+.film-details {
+  flex: 0 1 66.666666%;
+  background-color: #f0f0f0;
+}
+
+.film-row {
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 3fr;
+
+  margin-bottom: 0.2rem;
+  font-size: 0.5em;
+  background-color: white;
+}
+
+.film-row:hover {
+  cursor: pointer;
+}
+
+.film-row-fave {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  padding: 0 0.2em;
+  background-color: transparent;
+  transition: all 0.1s linear;
+}
+
+.film-row-fave.remove_from_queue {
+  background-color: rgba(32, 178, 170, 0.75);
+}
+
+.film-poster {
+  margin: 0;
+}
+
+.film-summary {
+  padding: 0.5em 1.5em;
+  background-color: white;
+}
+
+.film-summary > h1 {
+  margin-bottom: 0.35em;
+}
+
+.film-summary > p {
+  font-size: 1.6em;
+  line-height: 1.35;
+  font-weight: 200;
+  margin-top: 0;
+}
+
+.section-title {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background-color: #777;
+  color: white;
+  text-align: center;
+  font-size: 0.75em;
+  padding: 0.5em;
+  margin: 0 0 0.1em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.film-list-filters {
+  position: fixed;
+  top: 1.6em;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  width: 33.333333%;
+}
+
+.film-list-filter {
+  flex-basis: 50%;
+  flex-grow: 1;
+  background-color: #ccc;
+  color: white;
+  text-align: center;
+  font-size: 0.75em;
+  padding: 0.5em;
+  margin: 0 0 0.1em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.film-list-filter:hover {
+  background-color: hsl(177, 70%, 46%);
+}
+
+.film-list-filter.is-active {
+  background-color: lightseagreen;
+}
+
+.section-count {
+  display: inline-block;
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 0.25em 0.25em 0.25em 0.5em;
+  border-radius: 20%;
+  margin-left: 0.5em;
+  font-weight: bold;
+}
+
+.film-details {
+  position: relative;
+  overflow-y: scroll;
+}
+
+.film-details > .section-title {
+  left: 33.333333%;
+  width: 66.666666%;
+}
+
+.film-detail {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+  margin-bottom: 2em;
+}
+
+.film-detail > p {
+  text-align: center;
+}
+
+.film-detail > p > .material-icons {
+  display: block;
+  font-size: 3em;
+  margin-bottom: 0.25em;
+}
+
+.film-detail.is-hydrated {
+  display: block;
+}
+
+.film-backdrop {
+  position: relative;
+}
+
+.film-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  color: white;
+  font-size: 4em;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.5));
+  padding: 0.25em 1.5rem;
+}
+
+.film-tagline {
+  line-height: 1.2;
+}
+
+.film-detail-poster {
+  float: right;
+  width: 20%;
+  margin-left: 2em;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
+}
+
+.film-meta {
+  padding: 1em 1.5em;
+  line-height: 1.45;
+  color: white;
+  background-color: lightseagreen;
+}
