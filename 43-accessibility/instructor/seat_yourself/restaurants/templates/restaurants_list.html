@@ -12,7 +12,7 @@
         <li>
           <a href="{% url 'restaurant_show' id=restaurant.pk %}">
             <h2 class="title-text">{{ restaurant.name }}</h2>
-            <img src="{{ restaurant.image }}" alt="{{ restaurant.name }}">
+            <img src="{{ restaurant.image }}" alt="">
           </a>
         </li>
         {% endfor %}

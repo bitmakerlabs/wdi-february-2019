@@ -42,7 +42,7 @@ def restaurant_edit(request, id):
 
 def categories_list(request):
     categories = Category.objects.all()
-    context = {'categories': categories}
+    context = {'categories': categories, 'title': 'Restaurant by category'}
     return render(request, 'categories.html', context)
 
 def category_show(request, id):

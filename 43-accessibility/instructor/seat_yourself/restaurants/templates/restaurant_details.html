@@ -7,7 +7,7 @@
     <p> <address>{{ restaurant.address }}</address> </p>
     <p>{{ restaurant.phone }}</p>
     <p>{{ restaurant.description }}</p>
-    <img class='restaurant-image' src="{{ restaurant.image }}">
+    <img alt="{{restaurant.name}}" class='restaurant-image' src="{{ restaurant.image }}">
     {% if user.is_authenticated %}
       {% if restaurant.owner == user %}
       <p> <a href="{% url 'restaurant_edit' id=restaurant.pk %}">Edit restaurant details</a> </p>
