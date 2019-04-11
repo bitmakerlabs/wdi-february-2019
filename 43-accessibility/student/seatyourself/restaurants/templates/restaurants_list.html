@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class='restaurants_list'>
+  {% if query %}
+    <section>
+      {% include '_restaurant_search_form.html' %}
+    </section>
+  {% endif %}
+    <section>
+      <ul class="gallery">
+        {% for restaurant in restaurants %}
+        <li>
+          <a href="{% url 'restaurant_show' id=restaurant.pk %}">
+            <h2 class="title-text">{{ restaurant.name }}</h2>
+            <img src="{{ restaurant.image }}" alt="{{ restaurant.name }}">
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+</main>
+{% endblock %}

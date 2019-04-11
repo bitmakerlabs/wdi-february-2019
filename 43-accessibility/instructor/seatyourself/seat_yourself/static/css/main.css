@@ -1,0 +1,237 @@
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 60px;
+}
+
+img {
+  max-width: 100%;
+}
+
+header {
+  display: grid;
+  grid-template-columns: max-content auto;
+  height: 80px;
+  line-height: 80px;
+  color: #333;
+  border-bottom: 1px solid #333;
+}
+
+header a {
+  color: #333;
+}
+
+header h1 {
+  padding: 0 0.5em;
+}
+
+h1, ul {
+  margin: 0;
+}
+
+.logo {
+  line-height: 80px;
+  font-size: 2em;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: max-content auto;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+nav li {
+  padding: 0 1em;
+}
+
+header li:hover a {
+  color: #ededdb;
+  padding-bottom: 0.25em;
+}
+
+header li:hover {
+  background: #333;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 500px));
+  margin: 0 auto;
+  max-width: 1500px;
+}
+
+.gallery a {
+  display: inline-block;
+  position: relative;
+}
+
+.gallery li {
+  height: 250px;
+}
+
+.gallery img {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.gallery a::after {
+  content: "";
+  height: 250px;
+  background-color: rgb(0,0,0,0.25);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.gallery .title-text {
+  position: absolute;
+  left: 0;
+  font-size: 2em;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #fffeed;
+  z-index: 1;
+  margin: 0;
+}
+
+.gallery a:hover::after {
+  background-color: rgb(0,0,0,0.1);
+}
+
+footer {
+  background: #333;
+  color: #fffeed;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 25px;
+  height: 60px;
+  line-height: 60px;
+}
+
+.owned-restaurants li {
+  border-bottom: 1px solid #333;
+  padding: 45px;
+}
+
+main.profile, main.login,
+main.signup, main.restaurant {
+  padding: 0 1em;
+}
+
+.category h2 {
+  padding: 0 1em;
+}
+
+.my-reservations li {
+  padding: 10px;
+}
+
+.profile li:nth-child(odd) {
+  background: #efefef;
+}
+
+form {
+  display: block;
+  margin: 0;
+  padding: 1em;
+}
+
+input,
+textarea {
+  display: inline-block;
+  font-family: Georgia, Times, serif;
+}
+
+
+[type=radio],
+[type=checkbox] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+form p, form fieldset {
+  margin-bottom: 1em;
+}
+
+label {
+  display: inline-block;
+  width: 20%;
+}
+
+fieldset > label {
+  width: auto;
+}
+
+[type=text],
+[type=email] {
+  padding: 0.25em 0.5em;
+}
+
+@media screen and (max-width: 900px){
+  .gallery {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+  }
+}
+
+@media screen and (max-width: 750px){
+  header {
+    grid-template-columns: auto;
+    padding-left: 1em;
+  }
+
+  header h1 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .gallery {
+    grid-template-columns: minmax(300px, 1fr);
+  }
+}
+
+@media screen and (max-width: 550px){
+  header li {
+    width: 100%;
+    text-align: right;
+    margin-left: 20px;
+    line-height: 40px;
+  }
+
+  .logo {
+    line-height: 160px;
+  }
+
+  header {
+    height: auto;
+  }
+
+  header ul {
+    flex-wrap: wrap;
+  }
+
+  label {
+    width: auto;
+  }
+}
+
+.restaurant-image {
+  max-width: 60%;
+  max-height: 60vh;
+}

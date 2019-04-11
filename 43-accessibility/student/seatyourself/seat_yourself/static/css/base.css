@@ -1,0 +1,43 @@
+html, body {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration-line: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul, ol {
+  padding: 0;
+}
+
+.underline {
+  position: relative;
+}
+
+.underline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  left: 5%;
+  background-color: #ededdb;
+  transition: 0.3s ease all;
+}
+
+header .underline:hover::after {
+  width: 90%;
+  transition: 0.3s ease all;
+}

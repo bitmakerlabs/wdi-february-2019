@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+  <main class='profile'>
+    {% if form %}
+      <h3>Create your profile:</h3>
+      <section>
+        <form method="post" action="{% url 'profile_create' %}">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Submit">
+        </form>
+      </section>
+    {% else %}
+      <h2>{{ request.user.profile.full_name}}</h2>
+      {% if request.user.reservations_made.exists %}
+        <section class='my-reservations'>
+          <h3>My reservations</h3>
+          <ol>
+            {% for reservation in request.user.reservations_made.all %}
+              <li>
+                <p> <time datetime="{{ reservation.date_and_time }}">{{ reservation.date }} at {{ reservation.time }} </time> </p>
+                <p> {{ reservation.restaurant.name }} </p>
+                <p> {{ reservation.restaurant.address }} </p>
+                <p> Table for {{ reservation.party_size }} </p>
+                {% if reservation.notes %}
+                  <p class='notes'>{{ reservation.notes }}</p>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ol>
+        </section>
+      {% endif%}
+      {% if request.user.owned_restaurants.exists %}
+        <section class='owned-restaurants'>
+          <h3>My restaurants</h3>
+            <ul>
+              {% for restaurant in request.user.owned_restaurants.all %}
+                <li>
+                  <a href="{% url 'restaurant_show' id=restaurant.pk %}">
+                    {{ restaurant.name }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+        </section>
+      {% endif%}
+    {% endif %}
+  </main>
+{% endblock %}

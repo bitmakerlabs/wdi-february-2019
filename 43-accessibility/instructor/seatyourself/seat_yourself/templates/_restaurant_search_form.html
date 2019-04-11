@@ -1,0 +1,7 @@
+<form action="{% url 'restaurants_search' %}" method='get'>
+  <div class='search-field'>
+    <input type="search" id='resto-search' name="query" value="{{ query }}">
+    <label for="resto-search">Search for restaurants</label>
+  </div>
+  <input type="submit" value='Search'>
+</form>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class='category'>
+  <h2> {{ category.name }} </h2>
+  <ul class="gallery">
+    {% for restaurant in category.restaurants.all %}
+    <li>
+      <a href="{% url 'restaurant_show' id=restaurant.pk %}">
+        <span class="title-text"> {{ restaurant.name }} </span>
+        <img src="{{ restaurant.image }}" alt="{{ restaurant.name }}">
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</main>
+{% endblock %}

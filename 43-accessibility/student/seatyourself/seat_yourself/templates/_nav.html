@@ -1,0 +1,26 @@
+<nav>
+  <i class="logo fas fa-utensils"></i>
+  <ul>
+    <li>
+      <a class="underline" href="{% url 'restaurants_list' %}">All restaurants</a>
+    </li>
+    <li>
+      <a class="underline" href="{% url 'categories_list' %}">Browse by cuisine</a>
+    </li>
+      {% if request.user.is_authenticated %}
+        <li>
+          <a class="underline" href="{% url 'user_profile' %}">My Profile</a>
+        </li>
+        <li>
+          <a class="underline"  href="{% url 'logout' %}">Logout</a>
+        </li>
+      {% else %}
+        <li>
+          <a class="underline"  href="{% url 'login' %}">Login</a>
+        </li>
+        <li>
+          <a class="underline"  href="{% url 'signup' %}">Sign up</a>
+        </li>
+      {% endif %}
+  </ul>
+</nav>
