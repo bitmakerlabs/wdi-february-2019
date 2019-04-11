@@ -22,6 +22,26 @@ ul, ol {
   padding: 0;
 }
 
+.screenreader-only {
+    position: absolute;
+    top: -1000px;
+    left: -1000px;
+    height: 1px;
+    width: 1px;
+    text-align: left;
+    overflow: hidden;
+}
+
+a .screenreader-only:active,
+a .screenreader-only:focus,
+a .screenreader-only:hover {
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    overflow: visible;
+}
+
 .underline {
   position: relative;
 }

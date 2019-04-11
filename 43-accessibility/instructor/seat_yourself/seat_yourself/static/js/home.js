@@ -7,5 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
     searchArea.scrollIntoView({
       behavior: 'smooth'
     });
+
+    // move focus to <main>
+    searchArea.setAttribute('tabindex', -1);
+    searchArea.addEventListener('focusout', function() {
+      searchArea.removeAttribute('tabindex');
+    })
+    searchArea.focus();
   });
 });
+
+
+
+
+

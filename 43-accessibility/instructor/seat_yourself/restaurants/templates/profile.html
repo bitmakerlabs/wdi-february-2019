@@ -2,7 +2,7 @@
 {% block content %}
   <main class='profile'>
     {% if form %}
-      <h3>Create your profile:</h3>
+      <h2>Create your profile:</h2>
       <section>
         <form method="post" action="{% url 'profile_create' %}">
           {% csrf_token %}
