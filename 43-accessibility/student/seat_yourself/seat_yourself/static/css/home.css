@@ -84,14 +84,10 @@ nav li {
   top: 50%;
   bottom: 50%;
   width: 100%;
-  color: #333;
-}
-
-.home-search input, .home-search label {
-  font-size: 1em;
 }
 
 .home-search input {
+  font-size: 1em;
   height: 2.5em;
   width: 6em;
   border: none;
@@ -99,10 +95,10 @@ nav li {
 
 .home-search input[type=submit] {
   background-color: transparent;
+  color: #333;
   border-radius: 9%;
   border: 1px solid #333;
   transition: 200ms ease;
-  vertical-align: top;
 }
 
 .home-search input[type=submit]:hover {
@@ -121,12 +117,3 @@ nav li {
   border-bottom: 1px solid #333;
 }
 
-.search-field {
-  display: inline-block;
-  vertical-align: bottom;
-}
-
-.search-field label {
-  display: block;
-  padding: 10px 0;
-}
