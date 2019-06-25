@@ -57,13 +57,8 @@ const Palette = () => {
   return (
     <section>
       <ul className="palette">
-        // Here we tell react to evaluate and render the
-        // components in the `swatchElements` array.
         { swatchElements }
       </ul>
-      // Since our Form is responsible for collecting the
-      // user-supplied swatch data, we pass in the `addSwatch`
-      // function as a prop named `onSubmit`.
       <Form onSubmit={ addSwatch } />
     </section>
   );
