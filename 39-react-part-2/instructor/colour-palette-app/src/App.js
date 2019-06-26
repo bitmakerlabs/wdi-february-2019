@@ -5,81 +5,69 @@
 // application data 'stateful'.
 import React, { useState } from 'react';
 
-// Since the Swatch and Form components are defined in separate files,
-// we import them here so that we can use them within the Palette.
-import Swatch from './Swatch';
-import Form from './Form';
+// Since the Palette component is defined in a separate file,
+// we import it here so that we can use it within the App.
+import Palette from './Palette';
 
-// COMPONENT: Palette
+// COMPONENT: App
 // Arguments: none
-// An unordered list of swatches
-const Palette = () => {
-
+const App = () => {
   // Here we define the data that our application will display.
-  // Since our application has been designed to render swatches,
-  // and each swatch is made of of 3x values, we've opted to
-  // represent the data as an 'array of arrays'.
-  const initialSwatches = [
-      [255, 0, 255],
-      [255, 255, 0],
-      [0, 255, 255],
+  // Since our application has been designed to render palettes,
+  // each of which renders several swatches, we've opted to
+  // represent the data as a three dimensional array (ie. 'an
+  // 'array of arrays of arrays').
+  //
+  // The `initialPalettes` variable contains an array whose
+  // members are inidividual 'palettes'. Each 'palette' array
+  // contains 3x arrays, each of which represents a 'swatch'.
+  // Each swatch contains 3x numeric values, each of which
+  // represents a single color channel.
+  const initialPalettes = [
+    [[255, 0, 255], [255, 255, 0], [0, 255, 255]],
   ];
 
   // After we define our initial data, we make it 'stateful'
   // using the `useState` hook. `useState` returns an array
-  // which we destructure into `swatches` and `setSwatches`.
-  // The `swatches` variable contains the current state of
-  // the application, and the `setSwatches` variable contains
+  // which we destructure into `palettes` and `setPalettes`.
+  // The `palettes` variable contains the current state of
+  // the application, and the `setPalettes` variable contains
   // a function that we can use to update the application state.
-  const [swatches, setSwatches] = useState(initialSwatches);
+  const [palettes, setPalettes] = useState(initialPalettes);
 
-  // Then we define a function that will be used to remove
-  // individual swatches using `setSwatches`.
-  //
-  // `removeSwatch` expects to be invoked with an integer,
-  // `index`, which represents the position of the target
-  // swatch within the array.
-  const removeSwatch = (index) => {
-    setSwatches((currentSwatches) => currentSwatches.filter((_, i) => i !== index));
+  const addPalette = () => {
+    setPalettes((currentPalettes) => [...currentPalettes, []])
   };
 
   // Since we want our view to be 'data driven', we iterate
-  // over the `swatches` array and return 1x Swatch component
+  // over the `palettes` array and return 1x Palette component
   // for each item. We capture the resulting array of
-  // components in the `swatchElements` variable.
+  // components in the `paletteElems` variable.
   //
-  // Notice that we're passing our red, green, and blue values
-  // into the component using the corresponding props. We're
-  // also allowing each swatch to invoke the `removeSwatch`
-  // method by passing in an arrow function under the `onRemove`
-  // prop.
-  const swatchElements = swatches.map((rgb, i) => <Swatch key={i} red={rgb[0]} green={rgb[1]} blue={rgb[2]} onRemove={ () => removeSwatch(i) } />);
-
-  // Then we define a function that will be used to add new,
-  // user-supplied functions. This function will be invoked with
-  // an array of swatch data (ie. `[0, 255, 100]`), which will
-  // then be added to the existing swatches using the `setSwatches`
-  // function defined above.
-  const addSwatch = (swatch) => {
-      setSwatches((currentSwatches) => [...currentSwatches, swatch]);
-  };
+  // Notice that we're passing 1x `palette` array into each
+  // Palette component. This means that each Palette component
+  // instance is responsible for displaying 1x collection
+  // of swatches.
+  const paletteElems = palettes.map((palette, i) => <Palette key={i} palette={palette} />)
 
   // Finally, we return the markup that represents this component.
-  // Our Palette is made up of a list of swatches, as well as
-  // form that is used to add new swatches. However, React
+  // Our application is made up of a list of palettes, as well as
+  // button that is used to add new palettes. However, React
   // components may only return 1x DOM node. To get around this
   // limitation, we wrap our list of swatches and form in a
-  // <section> tag.
+  // <div> tag.
   return (
-    <section>
-      <ul className="palette">
-        { swatchElements }
-      </ul>
-      <Form onSubmit={ addSwatch } />
-    </section>
+    <div>
+      <header>
+        <button onClick={ addPalette }>Add Palette</button>
+      </header>
+      <section className="palettes">
+        { paletteElems }
+      </section>
+    </div>
   );
 };
 
-// Since the Palette will be used by other files within our
+// Since the App will be used by other files within our
 // application, we expose it as the default export.
-export default Palette;
+export default App;
