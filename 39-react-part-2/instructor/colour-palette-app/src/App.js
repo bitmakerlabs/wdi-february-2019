@@ -33,11 +33,27 @@ const Palette = () => {
   // a function that we can use to update the application state.
   const [swatches, setSwatches] = useState(initialSwatches);
 
+  // Then we define a function that will be used to remove
+  // individual swatches using `setSwatches`.
+  //
+  // `removeSwatch` expects to be invoked with an integer,
+  // `index`, which represents the position of the target
+  // swatch within the array.
+  const removeSwatch = (index) => {
+    setSwatches((currentSwatches) => currentSwatches.filter((_, i) => i !== index));
+  };
+
   // Since we want our view to be 'data driven', we iterate
   // over the `swatches` array and return 1x Swatch component
   // for each item. We capture the resulting array of
   // components in the `swatchElements` variable.
-  const swatchElements = swatches.map((rgb, i) => <Swatch key={i} red={rgb[0]} green={rgb[1]} blue={rgb[2]} />);
+  //
+  // Notice that we're passing our red, green, and blue values
+  // into the component using the corresponding props. We're
+  // also allowing each swatch to invoke the `removeSwatch`
+  // method by passing in an arrow function under the `onRemove`
+  // prop.
+  const swatchElements = swatches.map((rgb, i) => <Swatch key={i} red={rgb[0]} green={rgb[1]} blue={rgb[2]} onRemove={ () => removeSwatch(i) } />);
 
   // Then we define a function that will be used to add new,
   // user-supplied functions. This function will be invoked with

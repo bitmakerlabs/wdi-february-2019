@@ -103,3 +103,44 @@ form button:hover,
 form button:focus {
   background: #e0e0e0;
 }
+
+/* The CSS below is required in order to support swatch removal. */
+.swatch {
+  text-shadow: 0;
+  display: grid;
+  align-content: center;
+  grid-template-columns: auto;
+}
+.swatch > :last-child {
+  text-align: center;
+  align-self: center;
+}
+.swatch-controls {
+  display: grid;
+  grid-gap: 0.25em;
+  grid-template-columns: 1fr 3em 3em 3em 1fr;
+  align-items: center;
+  align-content: center;
+}
+last.swatch-controls > :first-child {
+  text-align: right;
+  align-self: center;
+}
+.swatch-controls > :last-child {
+  text-align: left;
+  align-self: center;
+}
+.swatch-cta {
+  width: 90%;
+  max-width: 15em;
+  margin: 0 auto;
+  margin-top: 1rem;
+  font-weight: bold;
+  line-height: 2.75em;
+  border: 0;
+  border-radius: 1.375em;
+  background: #fff;
+  box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.4);
+  color: #222;
+  transition: background 0.15s, color 0.15s;
+}
